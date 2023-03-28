@@ -3,6 +3,7 @@ import {
   GoogleAuthProvider,
   signInWithEmailAndPassword,
   signInWithPopup,
+  signOut,
 } from "firebase/auth";
 import { auth } from "./config";
 
@@ -31,4 +32,9 @@ export async function loginEmailSenha(email, senha) {
   const resultado = await signInWithEmailAndPassword(auth, email, senha);
 
   return resultado.user;
+}
+
+export async function logout() {
+  // Deslogar o usuário atual do firebase
+  await signOut(auth);
 }
