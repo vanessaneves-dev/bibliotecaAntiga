@@ -1,13 +1,13 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
+import { addLivro } from "../../firebase/livros";
 
 export function AdicionarLivro() {
 
     const {register, handleSubmit, formState: {errors}} = useForm();
 
     function onSubmit(data) {
-        console.log(data)
-        // salvar no banco de dados
+        addLivro(data)
     }
 
     return (
