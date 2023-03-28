@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "./firebase/config";
 import { AuthContext } from "./contexts/AuthContext";
+import { AdicionarLivro } from "./pages/AdicionarLivro/AdicionarLivro";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -32,6 +33,7 @@ export function App() {
           <Routes>
             <Route path="/" element={<Root />}>
               <Route path="/" element={<Home />} />
+              <Route path="/livros/adicionar" element={<AdicionarLivro />} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
