@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Table } from "react-bootstrap";
+import { toast } from "react-hot-toast";
 import { Link } from "react-router-dom";
 import { Loader } from "../../components/Loader/Loader";
-import { getLivros } from "../../firebase/livros";
+import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 
 export function Livros() {
@@ -10,15 +11,22 @@ export function Livros() {
     const [livros, setLivros] = useState(null);
 
     useEffect(() => {
-        getLivros().then(busca => {
-            setLivros(busca) 
-        })
+        initializeTable();
     }, []);
+
+    function initializeTable() {
+        getLivros().then(resultados => {
+            setLivros(resultados)
+        })
+    }
 
     function onDeleteLivro(id, titulo) {
         const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
         if(deletar) {
-            // apagar o livro
+            deleteLivro(id).then(() => {
+                toast.success(`${titulo} apagado com sucesso!`, {duration: 2000, position: "bottom-right"});
+                initializeTable();
+            })
         }
     }
 
