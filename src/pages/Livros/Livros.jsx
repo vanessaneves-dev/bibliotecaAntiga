@@ -15,6 +15,13 @@ export function Livros() {
         })
     }, []);
 
+    function onDeleteLivro(id, titulo) {
+        const deletar = window.confirm(`Tem certeza que deseja excluir o livro ${titulo}?`);
+        if(deletar) {
+            // apagar o livro
+        }
+    }
+
     return (
         <div className="livros">
             <Container>
@@ -60,7 +67,7 @@ export function Livros() {
                                             >
                                                 <i className="bi bi-pencil-fill"></i>
                                             </Button>
-                                            <Button size="sm" variant="danger">
+                                            <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
                                                 <i className="bi bi-trash3-fill"></i>
                                             </Button>
                                         </td>
