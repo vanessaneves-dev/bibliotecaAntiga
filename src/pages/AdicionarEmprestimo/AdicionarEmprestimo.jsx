@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Button, Container, Form } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 import { adicionarEmprestimo } from "../../firebase/emprestimos";
 import { getLivro, getLivros } from "../../firebase/livros"
 
@@ -11,12 +12,15 @@ export function AdicionarEmprestimo() {
 
     const { register, handleSubmit, formState: { errors } } = useForm();
 
+    const navigate = useNavigate();
+
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
             let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date()};
             adicionarEmprestimo(novoEmprestimo).then(() => {
                 toast.success("Empréstimo adicionado com sucesso!", { duration: 2000, position: "bottom-right" })
+                navigate("/emprestimos");
             })
         })
 
