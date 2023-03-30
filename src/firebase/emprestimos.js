@@ -1,4 +1,4 @@
-import { addDoc, getDocs } from "firebase/firestore";
+import { addDoc, doc, getDoc, getDocs } from "firebase/firestore";
 import { emprestimosCollection } from "./collections";
 
 export async function adicionarEmprestimo(data) {
@@ -12,4 +12,9 @@ export async function getEmprestimos() {
         emprestimos.push({...doc.data(), id: doc.id});
     });
     return emprestimos;
+}
+
+export async function getEmprestimo(id) {
+    const document = await getDoc(doc(emprestimosCollection, id));
+    return {...document.data(), id: document.id};
 }
