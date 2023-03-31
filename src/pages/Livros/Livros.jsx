@@ -66,17 +66,19 @@ export function Livros() {
                                             <img src={livro.urlCapa} alt={livro.titulo} />
                                         </td>
                                         <td>
-                                            <Button
+                                            <Button 
                                                 as={Link}
                                                 to={`/livros/editar/${livro.id}`}
                                                 variant="warning"
                                                 size="sm"
                                                 className="me-2"
+                                                
                                             >
-                                                <i className="bi bi-pencil-fill"></i>
+                                                <i className="bi bi-pencil-fill "></i>
                                             </Button>
+                                           
                                             <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
-                                                <i className="bi bi-trash3-fill"></i>
+                                                <i className="bi bi-trash3-fill "></i>
                                             </Button>
                                         </td>
                                     </tr>
