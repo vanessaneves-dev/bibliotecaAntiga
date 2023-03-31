@@ -1,6 +1,6 @@
 import "./Menu.css";
 import { Container, Nav, Navbar } from "react-bootstrap";
-import logoIcon from "./../../assets/icons/livros.png";
+import logoIcon from "./../../assets/images/Logo2.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 
@@ -14,11 +14,11 @@ export function Menu() {
   }
 
   return (
-    <Navbar bg="success" variant="light" expand="lg">
+    <Navbar bg="light" variant="light" expand="lg">
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="32" alt="Logo" />
+            <img src={logoIcon} width="100" alt="Logo"/>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />
