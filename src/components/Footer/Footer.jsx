@@ -28,6 +28,7 @@ export function Footer () {
                     <div className="col-md-3 mb-md-0 mb-3" id="section-footer">
                         <h5 className="text-uppercase">Suporte</h5>
                         <ul className="list-unstyled">
+                             <li><Link as={Link} to="/ajuda">Ajuda</Link></li>
                             <li><Link as={Link} to="/conta">Sua conta</Link></li>
                             <li><Link as={Link} to="/emprestimos">Seus empréstimos</Link></li>
                             <li><Link as={Link} to="/livros">Seus livros</Link></li>
