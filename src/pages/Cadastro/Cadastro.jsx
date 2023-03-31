@@ -1,15 +1,16 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
 import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "../../contexts/AuthContext";
+import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 export function Cadastro() {
+
   const {
     register,
     handleSubmit,
@@ -17,6 +18,8 @@ export function Cadastro() {
   } = useForm();
 
   const navigate = useNavigate();
+  const [mostrar, setMostrar] = useState(false);
+
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -55,13 +58,6 @@ export function Cadastro() {
       });
   }
 
-  const usuarioLogado = useContext(AuthContext);
-
-  // Se tiver dados no objeto, está logado
-  if (usuarioLogado !== null) {
-    return <Navigate to="/" />;
-  }
-
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -91,12 +87,23 @@ export function Cadastro() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
+
+          <div className="d-flex" style={{gap: "15px"}}>
           <Form.Control
-            type="password"
-            className={errors.senha && "is-invalid"}
+            type={mostrar ? "text" : "password"} className={errors.senha && "is-invalid"}
             placeholder="Sua senha"
             {...register("senha", { required: "A senha é obrigatória" })}
           />
+
+          <Button
+            variant="secodary"
+            className="p-2"
+            onClick={() => setMostrar(!mostrar)}>
+            {mostrar ? <AiOutlineEye />
+              : <AiOutlineEyeInvisible />}
+          </Button>
+          </div>
+
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
