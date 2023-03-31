@@ -23,64 +23,51 @@ export function Emprestimos() {
                     </Button>
                 </div>
                 <hr />
-                {emprestimos === null ? (
-                    <Loader />
-                ) : (
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Leitor</th>
-                                <th>E-mail</th>
-                                <th>Telefone</th>
-                                <th>Livro</th>
-                                <th>Status</th>
-                                <th>Data de Empréstimo</th>
-                                <th>Ações</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {emprestimos.map((emprestimo) => {
-                                const dataEmprestimo = emprestimo.dataEmprestimo
-                                    ?.toDate()
-                                    ?.toLocaleDateString("pt-br");
-                                return (
-                                    <tr key={emprestimo.id}>
-                                        <td>{emprestimo.leitor}</td>
-                                        <td>{emprestimo.email}</td>
-                                        <td>{emprestimo.telefone}</td>
-                                        <td>
-                                            {emprestimo.livro
-                                                ? emprestimo.livro.titulo
-                                                : "Livro não encontrado"}
-                                        </td>
-                                        <td>
-                                            <Badge
-                                                bg={
-                                                    emprestimo.status === "Pendente"
-                                                        ? "warning"
-                                                        : "success"
-                                                }
-                                            >
-                                                {emprestimo.status}
-                                            </Badge>
-                                        </td>
-                                        <td>{dataEmprestimo}</td>
-                                        <td>
-                                            <Button
-                                                as={Link}
-                                                to={`/emprestimos/editar/${emprestimo.id}`}
-                                                variant="warning"
-                                                size="sm"
-                                            >
-                                                <i className="bi bi-pencil-fill"></i>
-                                            </Button>
-                                        </td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </Table>
-                )}
+                {
+                    emprestimos === null ?
+                        <Loader />
+                        :
+                        <Table striped bordered hover>
+                            <thead>
+                                <tr>
+                                    <th>Leitor</th>
+                                    <th>E-mail</th>
+                                    <th>Telefone</th>
+                                    <th>Livro</th>
+                                    <th>Status</th>
+                                    <th>Data de Empréstimo</th>
+                                    <th>Ações</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {emprestimos.map(emprestimo => {
+                                    const dataEmprestimo = emprestimo.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
+                                    return (
+                                        <tr key={emprestimo.id}>
+                                            <td>{emprestimo.leitor}</td>
+                                            <td>{emprestimo.email}</td>
+                                            <td>{emprestimo.telefone}</td>
+                                            <td>{emprestimo.livro ? emprestimo.livro.titulo : 'Livro não encontrado'}</td>
+                                            <td>
+                                                <Badge bg={emprestimo.status === "Pendente" ? "warning" : "success"}>{emprestimo.status}</Badge>
+                                            </td>
+                                            <td>{dataEmprestimo}</td>
+                                            <td>
+                                                <Button
+                                                    as={Link}
+                                                    to={`/emprestimos/editar/${emprestimo.id}`}
+                                                    variant="warning"
+                                                    size="sm"
+                                                >
+                                                    <i className="bi bi-pencil-fill"></i>
+                                                </Button>
+                                            </td>
+                                        </tr>
+                                    )
+                                })}
+                            </tbody>
+                        </Table>
+                }
             </Container>
         </div>
     );
