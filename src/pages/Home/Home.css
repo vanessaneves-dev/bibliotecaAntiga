@@ -1,0 +1,10 @@
+:root {
+    --color-lightBlue: #2ACCC2;
+    --color-darkBlue: #26333D;
+    --color-blue: #4A67DF;
+    --color-blue2: #248dad;
+}
+
+.h1 {
+    --color-lightBlue: #2ACCC2;
+}

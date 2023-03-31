@@ -5,21 +5,22 @@ import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
 
 export function Emprestimos() {
-
     const [emprestimos, setEmprestimos] = useState(null);
 
     useEffect(() => {
-        getEmprestimos().then(busca => {
+        getEmprestimos().then((busca) => {
             setEmprestimos(busca);
-        })
-    }, [])
+        });
+    }, []);
 
     return (
         <div className="emprestimos">
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Emprestimos</h1>
-                    <Button as={Link} to="/emprestimos/adicionar" variant="success">Adicionar emprestimo</Button>
+                    <Button as={Link} to="/emprestimos/adicionar" variant="success">
+                        Adicionar emprestimo
+                    </Button>
                 </div>
                 <hr />
                 {
@@ -67,8 +68,7 @@ export function Emprestimos() {
                             </tbody>
                         </Table>
                 }
-
             </Container>
         </div>
-    )
+    );
 }
