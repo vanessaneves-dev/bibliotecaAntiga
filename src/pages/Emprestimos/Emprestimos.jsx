@@ -40,13 +40,13 @@ export function Emprestimos() {
                             </thead>
                             <tbody>
                                 {emprestimos.map(emprestimo => {
-                                    const dataEmprestimo = emprestimo.dataEmprestimo.toDate().toLocaleDateString('pt-br');
+                                    const dataEmprestimo = emprestimo.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
                                     return (
                                         <tr key={emprestimo.id}>
                                             <td>{emprestimo.leitor}</td>
                                             <td>{emprestimo.email}</td>
                                             <td>{emprestimo.telefone}</td>
-                                            <td>{emprestimo.livro.titulo}</td>
+                                            <td>{emprestimo.livro ? emprestimo.livro.titulo : 'Livro não encontrado'}</td>
                                             <td>
                                                 <Badge bg={emprestimo.status === "Pendente" ? "warning" : "success"}>{emprestimo.status}</Badge>
                                             </td>

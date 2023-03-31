@@ -1,0 +1,72 @@
+:root {
+    --color-lightBlue: #2ACCC2;
+    --color-darkBlue: #26333D;
+    --color-blue: #4A67DF;
+    --color-blue2: #248dad;
+}
+
+#section-footer h5 {
+    color: var(--color-blue);
+    font-weight: 600;
+}
+
+#section-footer ul li {
+    margin-bottom: 10px 0px;
+    list-style: none;
+    padding-top: 10px;
+}
+
+#section-footer ul li a {
+    color: var(--color-darkBlue);
+    text-decoration: none;
+}
+
+#section-footer ul li a:hover {
+    color: var(--color-blue2);
+    transition: .3s ease;
+}
+
+#section-footer a::after {
+    content:"";
+    display: block;
+    margin: auto;
+    width: 50px;
+    border-bottom: 2px solid var(--color-blue2);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+#section-footer a:hover::after {
+    transform:scaleX(1);
+}
+
+#logo-footer:hover {
+    cursor: pointer;
+    animation: animacaoLogoFooter .7s ease-in-out;
+}
+
+@keyframes animacaoLogoFooter {
+    16% {
+        transform: rotate(0deg);
+    }
+
+    32% {
+        transform: rotate(-10deg);
+    }
+
+    48% {
+        transform: rotate(10deg);
+    }
+
+    64% {
+        transform: rotate(-10deg);
+    }
+
+    80% {
+        transform: rotate(10deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
+}
