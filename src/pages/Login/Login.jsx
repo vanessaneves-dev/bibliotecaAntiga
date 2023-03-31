@@ -7,6 +7,8 @@ import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
 import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import React, { useState } from 'react';
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
 export function Login() {
   const {
@@ -16,6 +18,8 @@ export function Login() {
   } = useForm();
 
   const navigate = useNavigate();
+  const [mostrar, setMostrar] = useState(false);
+
 
   function onSubmit(data) {
     const { email, senha } = data;
@@ -88,12 +92,22 @@ export function Login() {
         </Form.Group>
         <Form.Group className="mb-3" controlId="senha">
           <Form.Label>Senha</Form.Label>
+          <div className="d-flex" style={{gap: "15px"}}>
           <Form.Control
-            type="password"
+            type={mostrar ? "text" : "password"} className={errors.senha && "is-invalid"}
             placeholder="Sua senha"
-            className={errors.senha ? "is-invalid" : ""}
-            {...register("senha", { required: "Senha é obrigatória" })}
+            {...register("senha", { required: "A senha é obrigatória" })}
           />
+
+          <Button
+            variant="secodary"
+            className="p-2"
+            onClick={() => setMostrar(!mostrar)}>
+            {mostrar ? <AiOutlineEye />
+              : <AiOutlineEyeInvisible />}
+          </Button>
+          </div>
+
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
