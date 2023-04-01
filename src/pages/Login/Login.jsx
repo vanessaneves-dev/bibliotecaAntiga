@@ -193,62 +193,6 @@ export function Login() {
          </div>
         </div>
       </div>    
-    <Container fluid className="my-5">
-      <p className="text-center">
-        <img src={loginImg} width="256" alt="Logo" />
-      </p>
-      <h4>Bem-vindo(a) de volta!</h4>
-      <p className="text-muted">
-        Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
-      </p>
-      <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle} size="md">
-      <i className="bi bi-google" width="32"></i> Entrar com o Google</Button>
-      <br />
-      <Button className="mb-3" onClick={onLoginGitHub} size="md" style={{gap: "30px", backgroundColor: "#24292F"}}>
-        <i className="bi bi-github" width="32" ></i> Entrar com o GitHub</Button>
-      <br />
-      <Button className="mb-3" onClick={onLoginFacebook} size="md" style={{gap: "30px", backgroundColor: "#3578E5"}}>
-        <i className="bi bi-facebook" width="32" ></i> Entrar com o Facebook</Button>
-      <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control
-            type="email"
-            placeholder="Seu email"
-            className={errors.email ? "is-invalid" : ""}
-            {...register("email", { required: "Email é obrigatório" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.email?.message}
-          </Form.Text>
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="senha">
-          <Form.Label>Senha</Form.Label>
-          <div className="d-flex" style={{gap: "15px"}}>
-          <Form.Control
-            type={mostrar ? "text" : "password"} className={errors.senha && "is-invalid"}
-            placeholder="Sua senha"
-            {...register("senha", { required: "A senha é obrigatória" })}
-          />
-
-          <Button
-            variant="secodary"
-            className="p-2"
-            onClick={() => setMostrar(!mostrar)}>
-            {mostrar ? <AiOutlineEye />
-              : <AiOutlineEyeInvisible />}
-          </Button>
-          </div>
-
-          <Form.Text className="invalid-feedback">
-            {errors.senha?.message}
-          </Form.Text>
-        </Form.Group>
-        <Button type="submit" variant="success">
-          Entrar
-        </Button>
-      </Form>
     </Container>
     </section>
   );
