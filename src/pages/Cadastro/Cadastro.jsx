@@ -1,13 +1,14 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logoIcon from "../../assets/icons/livros.png";
-import googleIcon from "../../assets/icons/google-white.svg";
+import logoIcon from "../../assets/images/Logo3.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import "./Cadastro.css";
+
 
 export function Cadastro() {
 
@@ -59,25 +60,27 @@ export function Cadastro() {
   }
 
   return (
+    <section>
     <Container fluid className="my-5">
+    <div className="row">
+      <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
+        <div id="container-login" className="card border-0 shadow rounded-3  my-5 px-5">
+          <div className="card-body p-1 p-sm-4"></div>
       <p className="text-center">
-        <img src={logoIcon} width="256" alt="Logo do app" />
+        <img src={logoIcon} width="70%" alt="Logo do app" />
       </p>
-      <h4>Faça parte da nossa plataforma</h4>
+      <h5 class="card-title mb-3 fw-light fs-3 text-muted">Faça parte da nossa plataforma</h5>
       <p className="text-muted">
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
-      <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
-      </Button>
+      <hr className="mt-0" />
+      
       <Form onSubmit={handleSubmit(onSubmit)}>
-        <Form.Group className="mb-3" controlId="email">
+        <Form.Group className="mb-3 " controlId="email">
           <Form.Label>Email</Form.Label>
-          <Form.Control
+          <Form.Control 
             type="email"
-            className={errors.email && "is-invalid"}
+            className={errors.email ? "form-control is-invalid" : "form-control "}
             placeholder="Seu email"
             {...register("email", { required: "O email é obrigatório" })}
           />
@@ -85,33 +88,60 @@ export function Cadastro() {
             {errors.email?.message}
           </Form.Text>
         </Form.Group>
+
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
-
-          <div className="d-flex" style={{gap: "15px"}}>
-          <Form.Control
-            type={mostrar ? "text" : "password"} className={errors.senha && "is-invalid"}
+          <div className=" input-group mb-3" >
+          <Form.Control 
+            type={mostrar ? "text" : "password"} className={errors.senha && "is-invalid" }
             placeholder="Sua senha"
             {...register("senha", { required: "A senha é obrigatória" })}
           />
 
           <Button
-            variant="secodary"
-            className="p-2"
+            variant="secodary" type="button"
+            className="p-2 btn btn-outline-secondary"
             onClick={() => setMostrar(!mostrar)}>
             {mostrar ? <AiOutlineEye />
               : <AiOutlineEyeInvisible />}
           </Button>
           </div>
 
+          <div className="d-grid">
+            <Button type="submit" className="btn btn-m btn-outline-secondary text-white text-uppercase fw-bold  " variant="primary">
+            Cadastrar
+            </Button>
+          </div>
+          <hr className="my-4" />
+
+          <div className="d-grid mb-2">
+            <Button className="btn-login text-uppercase fw-bold border-0 fw-bold btn-m btn-outline-secondary" variant="google" onClick={onLoginGoogle}>
+              Cadastrar com o Google
+            </Button>
+            </div>   
+            <div className="d-grid mb-2">
+            <Button 
+              variant="github" 
+              className="btn-login text-uppercase fw-bold border-1 fw-bold btn-m btn-outline-secondary" 
+              type="button">
+                Cadastrar com o Github <i className="fab fa-github ms-2"></i>
+            </Button>
+            </div>
+            <div className="d-grid mb-5">
+              <Button className="btn-login text-uppercase fw-bold border-0 fw-bold btn-m btn-outline-secondary" variant="facebook"
+                Cadastrar com o Facebook type="button"> Cadastrar com o Facebook <i className="fab fa-facebook ms-2"> </i>
+              </Button>
+            </div>         
           <Form.Text className="invalid-feedback">
             {errors.senha?.message}
           </Form.Text>
         </Form.Group>
-        <Button type="submit" variant="success">
-          Cadastrar
-        </Button>
+        
       </Form>
+      </div>
+      </div>
+      </div>
     </Container>
+    </section>
   );
 }

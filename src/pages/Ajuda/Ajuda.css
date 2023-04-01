@@ -7,6 +7,12 @@
 
 .active-link {
   background-color:var(--color-blue);
-  color: white !important ;
+  color: white !important ; 
+}
+
+#container-ajuda {
+  padding: 40px;
+  margin-top: 60px;
+  margin-bottom: 60px;
  
 }

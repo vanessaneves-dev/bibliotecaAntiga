@@ -1,0 +1,21 @@
+:root {
+  --color-lightBlue: #2ACCC2;
+  --color-darkBlue: #26333D;
+  --color-blue: #4A67DF;
+  --color-blue2: #248dad;
+}
+
+#container-login {
+  display: grid;
+  margin-left: 20px ;
+}
+
+.btn-google {
+  color: white !important;
+  background-color: #ea4335;
+}
+
+.btn-facebook {
+  color: white !important;
+  background-color: #3b5998;
+}
