@@ -1,8 +1,9 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logoIcon from "../../assets/images/Logo3.svg";
+import logoIcon from "../../assets/icons/livros.png";
+import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginFacebook, loginGitHub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
@@ -59,6 +60,44 @@ export function Cadastro() {
       });
   }
 
+  function onLoginGitHub() {
+    // then = quando der certo o processo
+    loginGitHub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
+  function onLoginFacebook() {
+    // then = quando der certo o processo
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
   return (
     <section>
     <Container fluid className="my-5">
@@ -73,8 +112,11 @@ export function Cadastro() {
       <p className="text-muted">
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
-      <hr className="mt-0" />
-      
+      <hr />
+      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
+        <img src={googleIcon} width="32" alt="Logo do google" />
+        Entrar com o Google
+      </Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 " controlId="email">
           <Form.Label>Email</Form.Label>
