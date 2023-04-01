@@ -6,7 +6,7 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 import googleIcon from "../../assets/icons/google-white.svg";
 import loginImg from "../../assets/images/login.png";
 import { AuthContext } from "../../contexts/AuthContext";
-import { loginGoogle, loginEmailSenha } from "../../firebase/auth";
+import { loginGoogle, loginEmailSenha, loginGitHub, loginFacebook } from "../../firebase/auth";
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
 
@@ -56,6 +56,44 @@ export function Login() {
       });
   }
 
+  function onLoginGitHub() {
+    // then = quando der certo o processo
+    loginGitHub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
+  function onLoginFacebook() {
+    // then = quando der certo o processo
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
   const usuarioLogado = useContext(AuthContext);
 
   // Se tiver dados no objeto, está logado
@@ -73,10 +111,14 @@ export function Login() {
         Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Google icon" /> Entrar com o
-        Google
-      </Button>
+      <Button className="mb-3" variant="danger" onClick={onLoginGoogle} size="md">
+      <i className="bi bi-google" width="32"></i> Entrar com o Google</Button>
+      <br />
+      <Button className="mb-3" onClick={onLoginGitHub} size="md" style={{gap: "30px", backgroundColor: "#24292F"}}>
+        <i className="bi bi-github" width="32" ></i> Entrar com o GitHub</Button>
+      <br />
+      <Button className="mb-3" onClick={onLoginFacebook} size="md" style={{gap: "30px", backgroundColor: "#3578E5"}}>
+        <i className="bi bi-facebook" width="32" ></i> Entrar com o Facebook</Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>

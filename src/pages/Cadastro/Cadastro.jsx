@@ -1,9 +1,8 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logoIcon from "../../assets/icons/livros.png";
-import googleIcon from "../../assets/icons/google-white.svg";
 import { useForm } from "react-hook-form";
-import { cadastrarEmailSenha, loginGoogle } from "../../firebase/auth";
+import { cadastrarEmailSenha, loginFacebook, loginGitHub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
@@ -58,6 +57,44 @@ export function Cadastro() {
       });
   }
 
+  function onLoginGitHub() {
+    // then = quando der certo o processo
+    loginGitHub()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
+  function onLoginFacebook() {
+    // then = quando der certo o processo
+    loginFacebook()
+      .then((user) => {
+        toast.success(`Bem-vindo(a) ${user.email}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+        navigate("/");
+      })
+      .catch((erro) => {
+        // tratamento de erro
+        toast.error(`Um erro aconteceu. Código: ${erro.code}`, {
+          position: "bottom-right",
+          duration: 2500,
+        });
+      });
+  }
+
   return (
     <Container fluid className="my-5">
       <p className="text-center">
@@ -68,10 +105,14 @@ export function Cadastro() {
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
       <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
-      </Button>
+      <Button className="mb-3" variant="danger" onClick={onLoginGoogle} size="md">
+      <i className="bi bi-google" width="32"></i> Entrar com o Google</Button>
+      <br />
+      <Button className="mb-3" onClick={onLoginGitHub} size="md" style={{gap: "30px", backgroundColor: "#24292F"}}>
+        <i className="bi bi-github" width="32" ></i> Entrar com o GitHub</Button>
+      <br />
+      <Button className="mb-3" onClick={onLoginFacebook} size="md" style={{gap: "30px", backgroundColor: "#3578E5"}}>
+        <i className="bi bi-facebook" width="32" ></i> Entrar com o Facebook</Button>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3" controlId="email">
           <Form.Label>Email</Form.Label>
