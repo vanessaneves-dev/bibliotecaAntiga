@@ -15,6 +15,7 @@ import { AdicionarEmprestimo } from "./pages/AdicionarEmprestimo/AdicionarEmpres
 import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
+import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePrivacidade";
 
 
 export function App() {
@@ -47,6 +48,7 @@ export function App() {
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
               <Route path="/ajuda" element={<Ajuda/> } />
+              <Route path="/politicas-de-privacidade" element={<PoliticaDePrivacidade/> } />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
