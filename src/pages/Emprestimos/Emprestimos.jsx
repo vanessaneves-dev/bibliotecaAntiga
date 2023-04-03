@@ -13,6 +13,8 @@ export function Emprestimos() {
         });
     }, []);
 
+    
+
     return (
         <div className="emprestimos">
             <Container>
@@ -36,12 +38,31 @@ export function Emprestimos() {
                                     <th>Livro</th>
                                     <th>Status</th>
                                     <th>Data de Empréstimo</th>
+                                    <th>Data de Entrega</th>
                                     <th>Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {emprestimos.map(emprestimo => {
-                                    const dataEmprestimo = emprestimo.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
+                                    const dataEmprest = emprestimo.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
+                                    const dataEntr = emprestimo.dataEntrega?.toDate()?.toLocaleDateString('pt-br');
+                                    let dataAtual = new Date().toLocaleDateString('ko-KR')
+                                    let dataHoje = new Date(dataAtual)
+                                    let dataPrazo = new Date(emprestimo.dataEntrega?.toDate()?.toLocaleDateString('ko-KR'))
+                                    let cor; 
+                                    if (dataHoje > dataPrazo) {
+                                        emprestimo.status = "Atrasado"
+                                        cor = "danger"
+                                    } else {
+                                        emprestimo.status = emprestimo.status
+                                        if(emprestimo.status === "Pendente"){
+                                            cor = "warning"
+                                        } else if (emprestimo.status === "Entregue") {
+                                            cor = "success"
+                                        } else {
+                                            cor = "danger"
+                                        }
+                                    }                                    
                                     return (
                                         <tr key={emprestimo.id}>
                                             <td>{emprestimo.leitor}</td>
@@ -49,9 +70,10 @@ export function Emprestimos() {
                                             <td>{emprestimo.telefone}</td>
                                             <td>{emprestimo.livro ? emprestimo.livro.titulo : 'Livro não encontrado'}</td>
                                             <td>
-                                                <Badge bg={emprestimo.status === "Pendente" ? "warning" : "success"}>{emprestimo.status}</Badge>
+                                                <Badge bg={cor}>{emprestimo.status}</Badge>
                                             </td>
-                                            <td>{dataEmprestimo}</td>
+                                            <td>{dataEmprest}</td>
+                                            <td>{dataEntr}</td>
                                             <td>
                                                 <Button
                                                     as={Link}
