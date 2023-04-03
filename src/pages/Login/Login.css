@@ -1,0 +1,15 @@
+:root {
+  --color-lightBlue: #2ACCC2;
+  --color-darkBlue: rgb(38, 51, 61);
+  --color-blue: #4A67DF;
+  --color-blue2: #248dad;
+}
+
+#container-login {
+  display: grid;
+  margin-left: 20px ;
+}
+
+button{
+  color: #fff !important;
+}
