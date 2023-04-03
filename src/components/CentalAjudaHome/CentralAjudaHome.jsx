@@ -8,8 +8,8 @@ import "./CentralAjudaHome.css";
 export const CentralAjudaHome = () => {
   return (
   <>
-  <section >
-    <div className="logo">
+  <section style={{ marginLeft:'120px' }}>
+    <div className="logo"  >
     <h1>central de ajuda </h1>
     <img  src={logoHome} alt="Logo da Bibliotech"  />
     </div>

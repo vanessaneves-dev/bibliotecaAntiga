@@ -1,0 +1,9 @@
+/* #carousel-cadastro1 {
+  padding: 40px;
+} */
+
+.centralizar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

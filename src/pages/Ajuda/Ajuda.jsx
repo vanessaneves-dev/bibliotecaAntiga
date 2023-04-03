@@ -1,10 +1,10 @@
 import {Col, Nav, Container, Button, Row, Tab } from 'react-bootstrap';
 import AjudaDropdown from "../../components/AjudaDropdown/AjudaDropdown";
-import './Ajuda.css'
-import { Loader } from '../../components/Loader/Loader';
 import { useRef, useState } from 'react';
-import { CarouselAjuda } from '../../components/CarouselAjuda/CarouselAjuda';
+import { CarouselAjuda } from '../../components/CarouselAjudaCadastro/CarouselAjudaCadastro';
 import { CentralAjudaHome } from '../../components/CentalAjudaHome/CentralAjudaHome';
+import './Ajuda.css'
+import { AjudaAcessoGeral } from '../../components/AjudaAcessoGeral/AjudaAcessoGeral';
 
 
 
@@ -16,6 +16,8 @@ export function Ajuda() {
   };
 
   const helpRef = useRef (null);
+
+  
 
   return ( <>
   <section  id='container-ajuda' className='container-md' >
@@ -40,38 +42,7 @@ export function Ajuda() {
                 <CentralAjudaHome/>
             </Tab.Pane>
             <Tab.Pane eventKey="second">
-            <section style={{ marginTop: '60px' }} className='container-md' >
-              <Tab.Container id="left-tabs-example" defaultActiveKey="first2">
-                  <Row>
-                    <Col sm={4}>
-                      <Nav variant="pills"  className="flex-column" onSelect={handleSelect}>
-                        <Nav.Item>
-                          <Nav.Link eventKey="first2" style={{ color: 'black',borderRadius: '12px'}} className={activeKey === 'first2' ? 'active-link' : ''}>Cadastro</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="second2" style={{ color: 'black', borderRadius: '12px' }} className={activeKey === 'second2' ? 'active-link' : ''}>Login</Nav.Link>
-                        </Nav.Item>
-                        <Nav.Item>
-                          <Nav.Link eventKey="third2" style={{ color: 'black', borderRadius: '12px' }} className={activeKey === 'third2' ? 'active-link' : ''}> Problemas com a senha</Nav.Link > 
-                        </Nav.Item>
-                      </Nav>
-                    </Col>
-                    <Col sm={8}>
-                      <Tab.Content>
-                        <Tab.Pane eventKey="first2">
-                        <h1>teste</h1>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="second2">
-                        <h1>teste</h1>
-                        </Tab.Pane>
-                        <Tab.Pane eventKey="third2">
-                        <h1>teste</h1>
-                        </Tab.Pane>
-                      </Tab.Content>
-                    </Col>
-                  </Row>
-                </Tab.Container>
-              </section>
+            <AjudaAcessoGeral/>
             </Tab.Pane>
             <Tab.Pane eventKey="third">
               <AjudaDropdown/>

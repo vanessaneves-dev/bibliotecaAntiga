@@ -40,7 +40,7 @@ import { Dropdown } from 'react-bootstrap';
   }
 
   return (
-    <section style={{ padding: '20px', marginTop: '80px'}} >
+    <section style={{ padding: '20px', marginTop: '80px', marginLeft:'160px'}} >
       <Dropdown  >
         <Dropdown.Toggle variant="primary" id="dropdown-perguntas" style={{ padding: '10px', borderRadius: '12px'}}>
           {perguntaSelecionada ? perguntaSelecionada.pergunta : '<<< Selecione uma pergunta >>>'}

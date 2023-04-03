@@ -111,7 +111,7 @@ export function Login() {
           <p className="text-center">
             <img src={logoIcon} width="70%" alt="Logo do app" />
           </p>
-          <h5 class="card-title text-muted text-center mb-3 fw-light fs-3">Login</h5>
+          <h5 class="card-title text-muted text-center mb-3 fw-light fs-3">Faça seu Login</h5>
           <p className="text-muted mt-3 "> Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
           <hr className="mt-0" />
@@ -122,7 +122,7 @@ export function Login() {
             <div>
               <Form.Control
                 type="email"
-                placeholder="Seu nome"
+                placeholder="Seu email"
                 className={errors.email ? "form-control is-invalid" : "form-control"}
                 {...register("email", { required: "Email é obrigatório" })}
               />      
@@ -142,7 +142,7 @@ export function Login() {
                 {...register("senha", { required: "A senha é obrigatória" })}
               />
               <Button
-                variant="secodary" type="button"
+                variant="secondary" type="button"
                 className="p-2 btn btn-outline-secondary"
                 onClick={() => setMostrar(!mostrar)}>
                 {mostrar ? <AiOutlineEye />
@@ -165,27 +165,27 @@ export function Login() {
           <hr className="my-4" />
           <div className="d-grid mb-2">
             <Button
-              variant="google"
-              className="btn-login text-uppercase fw-bold border-0 fw-bold btn-m btn-outline-secondary"
+              variant="danger"
+              className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary"
               type="button"
               onClick={onLoginGoogle}>
-              <i className="fab fa-google me-2"></i> Entrar com Google
+              <i className="bi bi-google " width="32"></i> Entrar com Google
             </Button>
           </div>
           
           <div className="d-grid mb-2">
-            <Button
-              variant="github"
-              className="btn-login text-uppercase fw-bold border-1 fw-bold btn-m btn-outline-secondary"            type="button">
-              Entrar com Github <i className="fab fa-github ms-2"></i>
+            <Button 
+              variant="secondary"
+              className="btn-login text-uppercase fw-bold border-1 btn-m" type="button"  onClick={onLoginGitHub} >
+               <i className="bi bi-github" width="32" ></i> Entrar com Github 
             </Button>
           </div>
           <div className="d-grid mb-5">
             <Button
-              variant="facebook"
+              variant="primary"
               className="btn-login text-uppercase fw-bold btn-m border-0 btn-outline-secondary"
-              type="button">
-              <i className="fab fa-facebook-f me-2"></i> Entrar com Facebook
+              type="button" onClick={onLoginFacebook}>
+              <i className="bi bi-facebook" width="32"></i> Entrar com Facebook
             </Button>
           </div>
           

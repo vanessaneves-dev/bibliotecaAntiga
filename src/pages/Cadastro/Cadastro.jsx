@@ -1,7 +1,6 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import logoIcon from "../../assets/icons/livros.png";
-import googleIcon from "../../assets/icons/google-white.svg";
+import logoIcon from "../../assets/images/Logo3.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginFacebook, loginGitHub, loginGoogle } from "../../firebase/auth";
 import { toast } from "react-hot-toast";
@@ -109,27 +108,24 @@ export function Cadastro() {
         <img src={logoIcon} width="70%" alt="Logo do app" />
       </p>
       <h5 class="card-title mb-3 fw-light fs-3 text-muted">Faça parte da nossa plataforma</h5>
-      <p className="text-muted">
+      <p className="text-muted mt-3 ">
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
-      <hr />
-      <Button className="mb-3" variant="danger" onClick={onLoginGoogle}>
-        <img src={googleIcon} width="32" alt="Logo do google" />
-        Entrar com o Google
-      </Button>
+      <hr className="mt-0" />
+      
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Form.Group className="mb-3 " controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control 
-            type="email"
-            className={errors.email ? "form-control is-invalid" : "form-control "}
-            placeholder="Seu email"
-            {...register("email", { required: "O email é obrigatório" })}
-          />
-          <Form.Text className="invalid-feedback">
-            {errors.email?.message}
-          </Form.Text>
-        </Form.Group>
+        <Form.Label>Email</Form.Label>
+        <Form.Control 
+          type="email"
+          className={errors.email ? "form-control is-invalid" : "form-control "}
+          placeholder="Seu email"
+          {...register("email", { required: "O email é obrigatório" })}
+        />
+        <Form.Text className="invalid-feedback">
+          {errors.email?.message}
+        </Form.Text>
+      </Form.Group>
 
         <Form.Group className="mb-3" controlId="password">
           <Form.Label>Senha</Form.Label>
@@ -141,8 +137,8 @@ export function Cadastro() {
           />
 
           <Button
-            variant="secodary" type="button"
-            className="p-2 btn btn-outline-secondary"
+            variant="secondary"
+            className="p-2 btn "
             onClick={() => setMostrar(!mostrar)}>
             {mostrar ? <AiOutlineEye />
               : <AiOutlineEyeInvisible />}
@@ -157,21 +153,21 @@ export function Cadastro() {
           <hr className="my-4" />
 
           <div className="d-grid mb-2">
-            <Button className="btn-login text-uppercase fw-bold border-0 fw-bold btn-m btn-outline-secondary" variant="google" onClick={onLoginGoogle}>
-              Cadastrar com o Google
+            <Button className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" variant="primary" onClick={onLoginGoogle}>
+            <i className="bi bi-google" width="32"></i> Cadastrar com o Google
             </Button>
             </div>   
             <div className="d-grid mb-2">
             <Button 
-              variant="github" 
-              className="btn-login text-uppercase fw-bold border-1 fw-bold btn-m btn-outline-secondary" 
-              type="button">
-                Cadastrar com o Github <i className="fab fa-github ms-2"></i>
+              variant="secondary" 
+              className="btn-login text-uppercase fw-bold border-1btn-m btn-outline-secondary" 
+              type="button" onClick={onLoginGitHub}> <i className="bi bi-github me-1" width="32" ></i>
+                Cadastrar com o Github 
             </Button>
             </div>
             <div className="d-grid mb-5">
-              <Button className="btn-login text-uppercase fw-bold border-0 fw-bold btn-m btn-outline-secondary" variant="facebook"
-                Cadastrar com o Facebook type="button"> Cadastrar com o Facebook <i className="fab fa-facebook ms-2"> </i>
+              <Button className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" variant="danger"
+                Cadastrar com o Facebook type="button" onClick={onLoginFacebook} >  <i className="bi bi-facebook" width="32" ></i> Cadastrar com o Facebook 
               </Button>
             </div>         
           <Form.Text className="invalid-feedback">

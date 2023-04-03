@@ -1,6 +1,6 @@
 :root {
   --color-lightBlue: #2ACCC2;
-  --color-darkBlue: #26333D;
+  --color-darkBlue: rgb(38, 51, 61);
   --color-blue: #4A67DF;
   --color-blue2: #248dad;
 }
@@ -10,12 +10,6 @@
   margin-left: 20px ;
 }
 
-.btn-google {
-  color: white !important;
-  background-color: #ea4335;
-}
-
-.btn-facebook {
-  color: white !important;
-  background-color: #3b5998;
+button{
+  color: #fff !important;
 }
