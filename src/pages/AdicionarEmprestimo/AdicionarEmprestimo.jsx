@@ -68,7 +68,7 @@ export function AdicionarEmprestimo() {
                             {errors.idLivro?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Emprestar</Button>
+                    <Button type="submit" style={{ backgroundColor: "#248dad" }}>Emprestar</Button>
                 </Form>
             </Container>
         </div>
