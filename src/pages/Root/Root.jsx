@@ -5,6 +5,7 @@ import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
 import "./root.css"
 
+
 // Layout principal do App com Navbar Fixa
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
@@ -23,10 +24,11 @@ export function Root() {
       </header>
       <main>
         <Outlet />
-      </main>
-      <footer>
+      <footer> 
         <Footer />
       </footer>
+      </main>
+      
     </>
   );
 }
