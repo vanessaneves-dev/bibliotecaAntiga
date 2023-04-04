@@ -96,6 +96,7 @@ export function Cadastro() {
         });
       });
   }
+  
 
   return (
     <section>
