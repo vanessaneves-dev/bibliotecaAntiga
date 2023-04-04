@@ -1,11 +1,17 @@
 import "./Menu.css";
-import { Container, Nav, Navbar } from "react-bootstrap";
+import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/images/Logo2.svg";
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
+import { ImagemPerfil } from "../ImagemPerfil/ImagemPerfil";
+import { FotoPerfilNav } from "../FotoPerfilNav/FotoPerfilNav";
 
 export function Menu() {
   const navigate = useNavigate();
+
+  const { usuarioLogado } = useContext(AuthContext);
 
   function onLogout() {
     logout().then(() => {
@@ -15,6 +21,7 @@ export function Menu() {
 
   return (
     <Navbar bg="light" variant="light" expand="lg">
+       
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
@@ -33,6 +40,16 @@ export function Menu() {
             <Nav.Link as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
+            <Nav.Link as={Link} to="/perfilUsuario">
+              Meu Perfil
+            </Nav.Link>
+
+            <NavItem>
+            
+            <FotoPerfilNav />             
+            
+            </NavItem>
+
             <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>

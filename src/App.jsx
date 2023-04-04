@@ -16,6 +16,11 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePrivacidade";
+import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
+import { ImagemPerfil } from "./components/ImagemPerfil/ImagemPerfil";
+import { FotoPerfilNav } from "./components/FotoPerfilNav/FotoPerfilNav";
+
+
 
 
 export function App() {
@@ -47,6 +52,10 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
+              <Route path="/perfilUsuario" element={<PerfilUsuario/> }
+              />
+               <Route path="/fotoPerfilNav" element={< FotoPerfilNav /> }
+              />
               <Route path="/ajuda" element={<Ajuda/> } />
               <Route path="/politicas-de-privacidade" element={<PoliticaDePrivacidade/> } />
             </Route>
