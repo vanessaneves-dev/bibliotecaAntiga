@@ -1,17 +1,21 @@
 import "./Menu.css";
-import { Container, Nav, Navbar } from "react-bootstrap";
+
 import logoIcon from "./../../assets/images/BIBLIOTECH-removebg-preview.png";
+import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
+
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { Button } from "react-bootstrap";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useContext } from "react";
-
-
-
+import { AuthContext } from "../../contexts/AuthContext";
+import { ImagemPerfil } from "../ImagemPerfil/ImagemPerfil";
+import { FotoPerfilNav } from "../FotoPerfilNav/FotoPerfilNav";
 
 export function Menu() {
   const navigate = useNavigate();
+
+  const { usuarioLogado } = useContext(AuthContext);
 
   function onLogout() {
     logout().then(() => {
@@ -49,7 +53,15 @@ export function Menu() {
             <Nav.Link className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
-            <Nav.Link className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} onClick={onLogout}>
+            <Nav.Link as={Link} to="/perfilUsuario">
+              Meu Perfil
+            </Nav.Link>
+
+            <NavItem>            
+            <FotoPerfilNav />      
+            </NavItem>
+
+            <Nav.Link onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
             <Button className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} style={{ border: "none" }} onClick={mudar}>

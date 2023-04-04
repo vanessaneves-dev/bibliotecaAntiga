@@ -14,7 +14,7 @@ export function AjudaAcessoGeral () {
 
 
   return <>
-  <section style={{ marginTop: '60px', marginLeft:'60px'}} className='container-md' >
+  <section style={{ marginTop: '60px'}} className='container-md' >
     <Tab.Container id="left-tabs-example" defaultActiveKey="first2">
         <Row>
           <Col sm={4}>
