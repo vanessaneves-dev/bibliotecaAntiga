@@ -15,6 +15,7 @@ export function Emprestimos() {
         });
     }, []);
 
+
     const handlePageChange = (pageNumber) => {
         setActivePage(pageNumber);
     };
@@ -90,7 +91,6 @@ export function Emprestimos() {
         );
     };
     
-
     return (
         <div className="emprestimos">
             <Container>
@@ -101,6 +101,7 @@ export function Emprestimos() {
                     </Button>
                 </div>
                 <hr />
+
                 <Table striped bordered hover>
                     <thead>
                         <tr align="center" Valign="center">

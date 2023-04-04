@@ -34,6 +34,7 @@ export function AdicionarEmprestimo() {
         })
     }
 
+    
     useEffect(() => {
         getLivros().then(busca => {
             setLivros(busca);
