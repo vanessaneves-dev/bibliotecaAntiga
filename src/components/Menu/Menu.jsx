@@ -2,7 +2,7 @@ import "./Menu.css";
 
 import logoIcon from "./../../assets/images/BIBLIOTECH-removebg-preview.png";
 import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
-import logoIcon from "./../../assets/images/Logo2.svg";
+
 import { Link, useNavigate } from "react-router-dom";
 import { logout } from "../../firebase/auth";
 import { Button } from "react-bootstrap";
@@ -57,10 +57,8 @@ export function Menu() {
               Meu Perfil
             </Nav.Link>
 
-            <NavItem>
-            
-            <FotoPerfilNav />             
-            
+            <NavItem>            
+            <FotoPerfilNav />      
             </NavItem>
 
             <Nav.Link onClick={onLogout}>

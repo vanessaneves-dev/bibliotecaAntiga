@@ -19,9 +19,6 @@ import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePr
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { ImagemPerfil } from "./components/ImagemPerfil/ImagemPerfil";
 import { FotoPerfilNav } from "./components/FotoPerfilNav/FotoPerfilNav";
-
-
-
 import { ThemeContext } from "./contexts/ThemeContext";
 
 export function App() {

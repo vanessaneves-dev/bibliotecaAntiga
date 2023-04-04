@@ -154,7 +154,10 @@ export function Cadastro() {
           <hr className="my-4" />
 
           <div className="d-grid mb-2">
-            <Button className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" variant="primary" onClick={onLoginGoogle}>
+            <Button
+             className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" 
+             variant="danger"
+              onClick={onLoginGoogle}>
             <i className="bi bi-google" width="32"></i> Cadastrar com o Google
             </Button>
             </div>   
@@ -167,7 +170,9 @@ export function Cadastro() {
             </Button>
             </div>
             <div className="d-grid mb-5">
-              <Button className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" variant="danger"
+              <Button
+               className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" 
+               variant="primary"
                 Cadastrar com o Facebook type="button" onClick={onLoginFacebook} >  <i className="bi bi-facebook" width="32" ></i> Cadastrar com o Facebook 
               </Button>
             </div>         
