@@ -28,7 +28,7 @@ export function Footer () {
                     <div className="col-md-3 mb-md-0 mb-3" id="section-footer">
                         <h5 className="text-uppercase">Suporte</h5>
                         <ul className="list-unstyled">
-                             <li><Link as={Link} to="/ajuda">Ajuda</Link></li>
+                            <li><Link as={Link} to="/ajuda">Ajuda</Link></li>
                             <li><Link as={Link} to="/conta">Sua conta</Link></li>
                             <li><Link as={Link} to="/emprestimos">Seus empréstimos</Link></li>
                             <li><Link as={Link} to="/livros">Seus livros</Link></li>
@@ -38,7 +38,7 @@ export function Footer () {
                     <div className="col-md-3 mb-md-0 mb-3" id="section-footer">
                         <h5 className="text-uppercase">Redes sociais</h5>
                         <ul className="list-unstyled">
-                            <li><a href="#"><i className="bi bi-github"></i> Github</a></li>
+                            <li><a href="https://github.com/eujoaolima/bibliotech" target="_blank"><i className="bi bi-github"></i> Github</a></li>
                             <li><a href="#"><i className="bi bi-instagram"></i> Instagram</a></li>
                             <li><a href="#"><i className="bi bi-linkedin"></i> Linkedin</a></li>
                             <li><a href="#"><i className="bi bi-tiktok"></i> Tiktok</a></li>
