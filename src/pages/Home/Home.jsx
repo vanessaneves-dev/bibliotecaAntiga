@@ -3,12 +3,13 @@ import { useEffect, useState } from "react";
 import { getLivros } from "../../firebase/livros";
 import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
 import './Home.css'
-import TimeAgo from 'timeago-react';
+import { useContext } from "react";
+import { ThemeContext } from "../../contexts/ThemeContext";import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 import pt_BR from 'timeago.js/lib/lang/pt_BR'
 
 
-export function Home() {
+export function Home() { 
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState([]);
   const [emprest, setEmprest] = useState([]);
@@ -31,12 +32,14 @@ export function Home() {
       })
       }, [])
 
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
 
-  return <div>
-    
-    <Container>
+  return (
+     <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+    <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
-      <h1 style={{textAlign:'center', margin: '17px'}}><strong></strong></h1>
+      <h1 style={{textAlign:'center'}} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
       </div>
     
     <CardGroup>
@@ -69,10 +72,9 @@ export function Home() {
     </Card.Body>
     </Card>
     </CardGroup>
-
     </Container>
 
-    <Container className="my-5" >
+    <Container>
     <h1 className =  "text-center mb-1" ><b>Histórico de Livros Emprestados</b> </h1> 
 
     <Table striped bordered hover className="table-blue">
@@ -112,7 +114,8 @@ export function Home() {
   
  
     
-  </div>;
+  </div>
+  );
 }
 
 

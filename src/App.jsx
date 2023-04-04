@@ -16,7 +16,7 @@ import { Emprestimos } from "./pages/Emprestimos/Emprestimos";
 import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePrivacidade";
-
+import { ThemeContext } from "./contexts/ThemeContext";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -34,8 +34,28 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
+
+    const [temaEscuro, setTemaEscuro] = useState(false);
+  
+     function mudar() {
+      if (temaEscuro === true) {
+        setTemaEscuro(false);
+      } else {
+        setTemaEscuro(true);
+      }
+    }
+
+    useEffect(() => {
+      if (temaEscuro) {
+        document.body.classList.add("bg-dark", "text-white");
+      } else {
+        document.body.classList.remove("bg-dark", "text-white")
+      }
+    }, [temaEscuro]);
   return (
-    <>
+    <ThemeContext.Provider
+      value={{ temaEscuro: temaEscuro, mudar: mudar }}
+    >
       <AuthContext.Provider value={usuarioLogado}>
         <BrowserRouter>
           <Routes>
@@ -55,7 +75,9 @@ export function App() {
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
+      
       <Toaster />
-    </>
+      </ThemeContext.Provider>
+
   );
 }
