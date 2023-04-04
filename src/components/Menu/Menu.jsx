@@ -1,4 +1,6 @@
 import "./Menu.css";
+
+import logoIcon from "./../../assets/images/BIBLIOTECH-removebg-preview.png";
 import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 import logoIcon from "./../../assets/images/Logo2.svg";
 import { Link, useNavigate } from "react-router-dom";
@@ -25,7 +27,7 @@ export function Menu() {
       <Container fluid>
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="100" alt="Logo"/>
+            <img src={logoIcon} width="90" alt="Logo"/>
           </Link>
         </Navbar.Brand>
         <Navbar.Toggle />

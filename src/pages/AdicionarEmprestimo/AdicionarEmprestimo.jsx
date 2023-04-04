@@ -14,18 +14,27 @@ export function AdicionarEmprestimo() {
 
     const navigate = useNavigate();
 
+    function addDaysToDate(date, days){
+        var res = new Date(date);
+        res.setDate(res.getDate() + days);
+        return res;
+    }
+
+    var tmpDate = new Date(); 
+    
     function onSubmit(data) {
         getLivro(data.idLivro).then(livro => {
             delete data.idLivro;
-            let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date()};
+            let novoEmprestimo = {...data, status: "Pendente", livro, dataEmprestimo: new Date(), dataEntrega: addDaysToDate(tmpDate, 15)};
+            console.log(novoEmprestimo)
             adicionarEmprestimo(novoEmprestimo).then(() => {
                 toast.success("Empréstimo adicionado com sucesso!", { duration: 2000, position: "bottom-right" })
                 navigate("/emprestimos");
             })
         })
-
     }
 
+    
     useEffect(() => {
         getLivros().then(busca => {
             setLivros(busca);
@@ -68,7 +77,7 @@ export function AdicionarEmprestimo() {
                             {errors.idLivro?.message}
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Emprestar</Button>
+                    <Button type="submit" style={{ backgroundColor: "#248dad" }}>Emprestar</Button>
                 </Form>
             </Container>
         </div>

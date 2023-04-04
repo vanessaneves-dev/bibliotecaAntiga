@@ -1,16 +1,17 @@
-import { Container } from 'react-bootstrap';
-import CardGroup from 'react-bootstrap/CardGroup';
-import Card from 'react-bootstrap/Card'
+import { Card, CardGroup, Container, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getLivros } from "../../firebase/livros";
-import { getEmprestimos } from "../../firebase/emprestimos";
+import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
 import './Home.css'
-
+import TimeAgo from 'timeago-react';
+import * as timeago from 'timeago.js';
+import pt_BR from 'timeago.js/lib/lang/pt_BR'
 
 
 export function Home() {
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState([]);
+  const [emprest, setEmprest] = useState([]);
 
   useEffect(() => {
     getLivros().then(resultados => {
@@ -24,13 +25,18 @@ export function Home() {
     })
     }, [])
 
-  
+    useEffect(() => {
+      getEmprest().then(busca => {
+          setEmprest(busca);
+      })
+      }, [])
+
 
   return <div>
     
     <Container>
       <div style={{color: 'var(--color-darkBlue)'}}>
-      <h1 style={{textAlign:'center', margin: '17px'}}><strong>Dashboard</strong></h1>
+      <h1 style={{textAlign:'center', margin: '17px'}}><strong></strong></h1>
       </div>
     
     <CardGroup>
@@ -63,7 +69,50 @@ export function Home() {
     </Card.Body>
     </Card>
     </CardGroup>
+
     </Container>
+
+    <Container className="my-5" >
+    <h1 className =  "text-center mb-1" ><b>Histórico de Livros Emprestados</b> </h1> 
+
+    <Table striped bordered hover className="table-blue">
+    <thead>
+      <tr>
+          <th className="fs-5" > Leitor</th> 
+          <th className="fs-5">Livro</th>
+          <th className="fs-5">Período</th>
+      </tr>
+  </thead>
+ 
+  <tbody>
+  {emprest.map(emprest => {
+      const dataEmprestimo = emprest.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
+      let dataPrazo = emprest.dataEmprestimo?.toDate()
+      console.log(dataPrazo)
+      timeago.register('pt_BR', pt_BR);
+
+      return(
+       
+          <tr key={emprest.id}>
+              <td>{emprest.leitor}</td>
+              <td>{emprest.livro ? emprest.livro.titulo : 'Livro não encontrado'}</td>
+              
+             
+              <td><TimeAgo
+              datetime={dataPrazo}
+  locale='pt_BR'
+/> </td>
+              
+          </tr>
+          )
+  })}
+</tbody>
+    </Table>
+    </Container>
+  
+ 
     
   </div>;
 }
+
+

@@ -35,7 +35,7 @@ export function Livros() {
             <Container>
                 <div className="d-flex justify-content-between align-items-center">
                     <h1>Livros</h1>
-                    <Button as={Link} to="/livros/adicionar" variant="success">
+                    <Button as={Link} to="/livros/adicionar" style={{ backgroundColor: "#248dad" }}>
                         Adicionar Livro
                     </Button>
                 </div>
@@ -76,7 +76,7 @@ export function Livros() {
                                             >
                                                 <i className="bi bi-pencil-fill "></i>
                                             </Button>
-                                           
+                                        
                                             <Button size="sm" variant="danger" onClick={() => onDeleteLivro(livro.id, livro.titulo)}>
                                                 <i className="bi bi-trash3-fill "></i>
                                             </Button>
