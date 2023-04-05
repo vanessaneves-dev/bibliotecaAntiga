@@ -17,7 +17,6 @@ import { EditarEmprestimo } from "./pages/EditarEmprestimo/EditarEmprestimo";
 import { Ajuda } from "./pages/Ajuda/Ajuda";
 import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePrivacidade";
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
-import { ImagemPerfil } from "./components/ImagemPerfil/ImagemPerfil";
 import { FotoPerfilNav } from "./components/FotoPerfilNav/FotoPerfilNav";
 import { ThemeContext } from "./contexts/ThemeContext";
 
