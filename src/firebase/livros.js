@@ -43,3 +43,25 @@ export async function uploadCapaLivro(imagem) {
     return await getDownloadURL(result.ref);
 }
 
+export async function reorganizaArray (array) {
+    let livros = await array;
+    let livroReorder = [];
+    let total = 1;
+    for (let i = 0; i < livros.length; i++) {
+        if (i < livros.length - 1 && livros[i].titulo == livros[i + 1].titulo) {
+            total++;
+        } else {
+            livroReorder.push({ titulo: livros[i].titulo, urlCapa: livros[i].urlCapa, categoria: livros[i].categoria,  total: total });
+            total = 1;
+        }
+    }
+    livroReorder = livroReorder.sort( (x, y) => {
+        return x.total - y.total
+    } )
+    console.log(livroReorder);
+    return livroReorder
+}
+
+
+
+

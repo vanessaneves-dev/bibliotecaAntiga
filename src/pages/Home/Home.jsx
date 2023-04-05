@@ -1,6 +1,6 @@
-import { Card, CardGroup, Container, Table } from "react-bootstrap";
+import { Card, CardGroup, Container, Table, Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
-import { getLivros } from "../../firebase/livros";
+import { getLivros,reorganizaArray } from "../../firebase/livros";
 import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
 import './Home.css'
 import { useContext } from "react";
@@ -13,33 +13,47 @@ import Lottie from "lottie-react";
 import * as imagem from '../../assets/animation/books.json'
 
 
-
-export function Home() { 
+export function Home() {
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState([]);
   const [emprest, setEmprest] = useState([]);
-  
+  const [livrosRepetidos, setLivrosRepetidos] = useState([]);
+  const [listaLivros,setListaLivros] = useState([]);
 
-  useEffect(() => {
-    getLivros().then(resultados => {
-      setLivros(resultados)
-  })
-}, []);
-
-  useEffect(() => {
-    getEmprestimos().then(busca => {
-        setEmprestimos(busca);
-    })
-    }, [])
-
-    useEffect(() => {
-      getEmprest().then(busca => {
-          setEmprest(busca);
-      })
-      }, [])
 
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
+  
+  useEffect(() => {
+    getLivros().then((resultados) => {
+      setLivros(resultados);
+    });
+  }, []);
+
+  useEffect(() => {
+    getEmprestimos().then( async (busca) => {
+      setEmprestimos(busca);
+      console.log(busca)
+      let ranking= []
+      const  livros= await  getLivros()
+      livros.forEach(l => {
+        let n=0
+        busca.forEach(e=>{
+          if(e.livro.id===l.id){n=n+1 }
+          ranking.sort((a, b) => a.n - b.n);
+        })
+        ranking.push({n,l})
+      })
+      setLivrosRepetidos(ranking);
+    });
+  }, []);
+
+  useEffect(() => {
+    getEmprest().then((busca) => {
+      setEmprest(busca);
+    });
+  }, []);
+  
 
   const [isLoading, setIsLoading] = useState(true);
   
@@ -101,44 +115,70 @@ export function Home() {
     <Container className="mt-5 mb-3">
     <h1 className="titulo d-inline "><strong>Últimos empréstimos 📖</strong></h1> 
 
-    <Table striped hover className="table-blue rounded mt-3">
-    <thead>
-      <tr>
-          <th className="fs-5">Leitor</th> 
-          <th className="fs-5">Livro</th>
-          <th className="fs-5">Período</th>
-      </tr>
-  </thead>
- 
-  <tbody>
-  {emprest.map(emprest => {
-      let dataPrazo = emprest.dataEmprestimo?.toDate()
-      console.log(dataPrazo)
-      timeago.register('pt_BR', pt_BR);
+        <Table striped bordered hover className="table-blue">
+          <thead>
+            <tr>
+              <th className="fs-5"> Leitor</th>
+              <th className="fs-5">Livro</th>
+              <th className="fs-5">Período</th>
+            </tr>
+          </thead>
 
-      return(
-       
-          <tr key={emprest.id}>
-              <td>{emprest.leitor}</td>
-              <td>{emprest.livro ? emprest.livro.titulo : 'Livro não encontrado'}</td>
-              
-             
-              <td><TimeAgo
-              datetime={dataPrazo}
-              locale='pt_BR'
-            /> </td>
-                          
-                      </tr>
-                      )
-              })}
-            </tbody>
-                </Table>
-                </Container>
-              
-            
-                </Container>
-              </div>
+          <tbody>
+            {emprest.map((emprest) => {
+              const dataEmprestimo = emprest.dataEmprestimo
+                ?.toDate()
+                ?.toLocaleDateString("pt-br");
+              let dataPrazo = emprest.dataEmprestimo?.toDate();
+              timeago.register("pt_BR", pt_BR);
+
+              return (
+                <tr key={emprest.id}>
+                  <td>{emprest.leitor}</td>
+                  <td>
+                    {emprest.livro
+                      ? emprest.livro.titulo
+                      : "Livro não encontrado"}
+                  </td>
+
+                  <td>
+                    <TimeAgo datetime={dataPrazo} locale="pt_BR" />{" "}
+                  </td>
+                </tr>
               );
+            })}
+          </tbody>
+        </Table>
+      </Container>
+      <Container className="my-5">
+      <h3 className="text-center mb-3">Aproveite a leitura: <br/> Confira nossas sugestões de empréstimo de livros</h3> 
+        <Carousel className="mx-auto" variant="dark">
+          {livrosRepetidos.map((data) => {
+            console.log(data)
+            return (
+              <Carousel.Item interval={100000}>
+                <img
+                  className="d-block w-80 mx-auto" 
+                  src={data.l.urlCapa}
+                  alt="First slide"
+                  style={{ width: "100px;", height: "400px", opacity: "0.8" }}
+                />
+              
+              </Carousel.Item>
+            );
+          })}
+        </Carousel>
+        {/* {livrosRepetidos.map((data) => {
+          return (
+            <div>
+              <ul>
+                <li>{data}</li>
+              </ul>
+            </div>
+          );
+        })} */}
+      </Container>
+      </Container>
+    </div>
+  );
 }
-
-
