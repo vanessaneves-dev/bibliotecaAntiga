@@ -36,7 +36,6 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
-
     const [temaEscuro, setTemaEscuro] = useState(false);
   
      function mudar() {
@@ -69,11 +68,9 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-              <Route path="/perfilUsuario" element={<PerfilUsuario/> }
-              />
-               <Route path="/fotoPerfilNav" element={< FotoPerfilNav /> }
-              />
-              <Route path="/ajuda" element={<Ajuda/> } />
+              <Route path="/perfilUsuario" element={<PerfilUsuario/> }/>
+              <Route path="/fotoPerfilNav" element={< FotoPerfilNav /> }/>
+              <Route path="/ajuda" element={<Ajuda/> }/>
               <Route path="/politicas-de-privacidade" element={<PoliticaDePrivacidade/> } />
             </Route>
             <Route path="/login" element={<Login />} />

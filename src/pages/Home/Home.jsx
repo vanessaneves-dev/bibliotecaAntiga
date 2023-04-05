@@ -4,15 +4,21 @@ import { getLivros } from "../../firebase/livros";
 import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
 import './Home.css'
 import { useContext } from "react";
-import { ThemeContext } from "../../contexts/ThemeContext";import TimeAgo from 'timeago-react';
+import { ThemeContext } from "../../contexts/ThemeContext";
+import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 import pt_BR from 'timeago.js/lib/lang/pt_BR'
+//import { RingLoader } from "react-spinners";
+import Lottie from "lottie-react";
+import * as imagem from '../../assets/animation/books.json'
+
 
 
 export function Home() { 
   const [livros, setLivros] = useState([]);
   const [emprestimos, setEmprestimos] = useState([]);
   const [emprest, setEmprest] = useState([]);
+  
 
   useEffect(() => {
     getLivros().then(resultados => {
@@ -35,9 +41,26 @@ export function Home() {
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
 
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+      setTimeout(() => {
+      setIsLoading(false);
+    }, 3000);
+  }, []);
+
+  
+  return isLoading ? 
+  <Container className="d-flex align-items-center justify-content-center w-100 h-100" style={{height: "100vh", color: "#4A67DF"}}>
+    <h1>Bem-vindo ao mundo do conhecimento!!!
+    {/* <RingLoader className="mx-auto" isLoading={isLoading} size={350} color={"#4A67DF"}/> */}
+    <Lottie animationData={imagem} autoPlay />
+    </h1>
+    </Container> :
+
+  (    
     <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
-    <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+      <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
       <h1 style={{content: "", borderBottom: "2px solid var(--color-blue)", width: "15%" }} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
       </div>
@@ -84,14 +107,13 @@ export function Home() {
           <th className="fs-5">Livro</th>
           <th className="fs-5">Período</th>
       </tr>
-    </thead>
-
-    <tbody>
-      {emprest.map(emprest => {
-          const dataEmprestimo = emprest.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
-          let dataPrazo = emprest.dataEmprestimo?.toDate()
-          console.log(dataPrazo)
-          timeago.register('pt_BR', pt_BR);
+  </thead>
+ 
+  <tbody>
+  {emprest.map(emprest => {
+      let dataPrazo = emprest.dataEmprestimo?.toDate()
+      console.log(dataPrazo)
+      timeago.register('pt_BR', pt_BR);
 
           return (
               <tr key={emprest.id}>
