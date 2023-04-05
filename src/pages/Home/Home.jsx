@@ -36,7 +36,7 @@ export function Home() {
   const temaEscuro = resultado.temaEscuro;
 
   return (
-     <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+    <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
     <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
       <h1 style={{content: "", borderBottom: "2px solid var(--color-blue)", width: "15%" }} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
@@ -74,46 +74,38 @@ export function Home() {
     </CardGroup>
     </Container>
 
-    <Container>
-    <h1 className =  "text-center mb-1" ><b>Histórico de Livros Emprestados</b> </h1> 
+    <Container className="mt-3">
+    <h1 className="titulo"><strong>Últimos empréstimos 📖</strong></h1> 
 
-    <Table striped bordered hover className="table-blue">
+    <Table striped hover className="table-blue rounded">
     <thead>
       <tr>
-          <th className="fs-5" > Leitor</th> 
+          <th className="fs-5">Leitor</th> 
           <th className="fs-5">Livro</th>
           <th className="fs-5">Período</th>
       </tr>
-  </thead>
- 
-  <tbody>
-  {emprest.map(emprest => {
-      const dataEmprestimo = emprest.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
-      let dataPrazo = emprest.dataEmprestimo?.toDate()
-      console.log(dataPrazo)
-      timeago.register('pt_BR', pt_BR);
+    </thead>
 
-      return(
-       
-          <tr key={emprest.id}>
-              <td>{emprest.leitor}</td>
-              <td>{emprest.livro ? emprest.livro.titulo : 'Livro não encontrado'}</td>
-              
-             
-              <td><TimeAgo
-              datetime={dataPrazo}
-  locale='pt_BR'
-/> </td>
-              
-          </tr>
-          )
-  })}
-</tbody>
-    </Table>
-    </Container>
-  
- 
-    
+    <tbody>
+      {emprest.map(emprest => {
+          const dataEmprestimo = emprest.dataEmprestimo?.toDate()?.toLocaleDateString('pt-br');
+          let dataPrazo = emprest.dataEmprestimo?.toDate()
+          console.log(dataPrazo)
+          timeago.register('pt_BR', pt_BR);
+
+          return (
+              <tr key={emprest.id}>
+                  <td>{emprest.leitor}</td>
+                  <td>{emprest.livro ? emprest.livro.titulo : 'Livro não encontrado'}</td>
+                  <td>
+                    <TimeAgo datetime={dataPrazo}locale='pt_BR'/> 
+                  </td>
+              </tr>
+              )
+      })}
+    </tbody>
+  </Table>
+  </Container>
   </div>
   );
 }
