@@ -21,6 +21,7 @@ import { FotoPerfilNav } from "./components/FotoPerfilNav/FotoPerfilNav";
 import { ThemeContext } from "./contexts/ThemeContext";
 import { TermosECondicoes } from "./pages/TermosECondicoes/TermosECondicoes";
 import { Cookies } from "./pages/Cookies/Cookies";
+import { ConfirmaçaoEmail } from "./pages/ConfirmaçaoEmail/ConfirmaçaoEmail";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -80,6 +81,8 @@ export function App() {
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
+            <Route path="/confirmacao-email" element={<ConfirmaçaoEmail />} />
+
           </Routes>
         </BrowserRouter>
       </AuthContext.Provider>
