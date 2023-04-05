@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Navigate, Outlet } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
@@ -16,7 +16,9 @@ export function Root() {
   if (usuarioLogado === null) {
     // se está deslogado
     // redireciona para a página de login
-    return <Link to="/login" />;
+    return <Navigate to="/login" />;
+  } else if(!usuarioLogado.emailVerified) {
+    return <Navigate to="/confirmacao-email"/>
   }
 
   return (
