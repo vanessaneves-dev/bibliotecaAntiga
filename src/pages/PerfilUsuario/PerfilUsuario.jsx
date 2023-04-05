@@ -8,10 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import semFotoPerfil from "../../assets/images/perfilSemFoto.png"
 import { deleteUser } from "@firebase/auth";
 import {ImagemPerfil} from "../../components/ImagemPerfil/ImagemPerfil";
-
-
 export function PerfilUsuario() {
-
   
   const usuarioLogado = useContext(AuthContext);   
   const defaultValues = {
@@ -23,9 +20,7 @@ export function PerfilUsuario() {
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues });
-
   const navigate = useNavigate();
-
   const modalStyle = {
     display: "flex",
     alignItems: "center",
@@ -38,7 +33,6 @@ export function PerfilUsuario() {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 9999,
   };
-
   const modalContentStyle = {
     backgroundColor: "#fff",
     padding: "2rem",
@@ -49,7 +43,6 @@ export function PerfilUsuario() {
      
     const [imagem, setImagem] = useState(null);
     const [showModal, setShowModal] = useState(false);
-
   useEffect(() => {
     // Verificando se imagem está null, se sim, atribua a imagem de perfil padrão ou a imagem do usuário
     if (usuarioLogado.photoURL !== null) {
@@ -74,13 +67,11 @@ export function PerfilUsuario() {
     const img = data.imagem[0];
     if (img) {
       const toastId = toast.loading("Upload da imagem...", { position: "top-right" });
-
        // Carregando o toast de upload de imagem
       uploadFotoPefil(img).then((url) => {
         toast.dismiss(toastId);
         data.photoURL = url;
         delete data.imagem;
-
         // Atualizando usuário com a nova imagem de perfil
         updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
       })
@@ -92,7 +83,6 @@ export function PerfilUsuario() {
       updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
     }
   }
-
     // Função para deletar o usuário
   function onDelete() {
     deleteUser(usuarioLogado).then(() => {
@@ -106,7 +96,6 @@ export function PerfilUsuario() {
     setShowModal(false);
   }
     
-
    
   return (         
     <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
@@ -114,7 +103,6 @@ export function PerfilUsuario() {
         <div style={{width:"200px"}} >         
          <ImagemPerfil  imagem={imagem} / >  
          </div> 
-
         <Form onSubmit={handleSubmit(onSubmit)} className="form">
        
           <Form.Group className="mb-3">
@@ -137,7 +125,6 @@ export function PerfilUsuario() {
               {errors.email?.message}
             </Form.Text>
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label>Senha</Form.Label>
             <Form.Control type="text" size="lg" placeholder="********" className={errors.senha && "is-invalid"} {...register("senha", { minLength: { value: 8, message: "Mínimo de 8 caracteres!" } })} />
@@ -145,12 +132,13 @@ export function PerfilUsuario() {
               {errors.senha?.message}
             </Form.Text>
           </Form.Group>
+
           
           <div className="mt-4">
-            <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
+          <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
             <Button as={Link} to="/" style={{backgroundColor:"rgb(36, 141, 173)"}}>Cancelar</Button>
           </div>
-          
+
           <div className="mt-5 d-flex justify-content-end">
             <Button variant="danger" onClick={onDelete}>Deletar perfil</Button>
           </div>
@@ -164,7 +152,6 @@ export function PerfilUsuario() {
           </div>
         </div>
       )}
-
     </Container>
   )
 }
