@@ -39,9 +39,9 @@ export function Livros() {
   const temaEscuro = resultado.temaEscuro;
 
   return (
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+    <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
     <div className="livros">
-      <Container>
+      <Container className="shadow p-5 mb-5 bg-body-tertiary rounded" >
         <div className="d-flex justify-content-between align-items-center">
           <h1>Livros</h1>
           <Button
@@ -58,7 +58,7 @@ export function Livros() {
         ) : (
           <Table className="mb-0" bordered>
             <thead>
-              <tr className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+              <tr className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
                 <th>Título</th>
                 <th>Autor</th>
                 <th>Categoria</th>
@@ -67,7 +67,7 @@ export function Livros() {
                 <th>Ações</th>
               </tr>
             </thead>
-            <tbody className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+            <tbody className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
               {livros.map((livro) => {
                 return (
                   <tr key={livro.id}>

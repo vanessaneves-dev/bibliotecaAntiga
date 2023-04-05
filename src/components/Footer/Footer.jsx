@@ -1,5 +1,5 @@
 import { IconName } from "react-icons/fa";
-import logoFooter from "../../assets/images/BIBLIOTECH Logo Footer.png";
+import logoFooter from "../../assets/images/BIBLIOTECHLogo.png";
 import "./Footer.css";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
@@ -9,8 +9,8 @@ export function Footer() {
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
   return (
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
-      <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+    <div className={temaEscuro ? "dark-mode-custom text-light mt-3" : "bg-white text-dark mt-4"}>
+      <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
         <div className="container-fluid text-center text-md-left mb-2">
       
           <div className="row">
@@ -31,49 +31,32 @@ export function Footer() {
               <h5 className="text-uppercase">Informações</h5>
               <ul className="list-unstyled">
                 <li>
-                  <Link
-                    className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
-                    }
+                  <Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark" }
                     as={Link}
-                    to="/cookies"
-                  >
+                    to="/cookies">
                     Cookies
                   </Link>
                 </li>
                 <li>
-                  <Link
-                    className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                  <Link className={ temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
-                    as={Link}
-                    to="/politicas-de-privacidade"
-                  >
+                     as={Link}
+                    to="/politicas-de-privacidade">
                     Políticas de privacidade
                   </Link>
                 </li>
                 <li>
                   <Link
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
-                    to="/termos-e-condicoes-de-uso"
+                    to="/termosECondicoes"
                   >
                     Termos e condições de uso
                   </Link>
-                </li>
-                <li>
-                  <Link
-                    className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
-                    }
-                    as={Link}
-                    to="/trabalhe-conosco"
-                  >
-                    Trabalhe conosco
-                  </Link>
-                </li>
+                </li>     
+
               </ul>
             </div>
 
@@ -83,7 +66,7 @@ export function Footer() {
                 <li>
                   <Link
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
                     to="/ajuda"
@@ -94,7 +77,7 @@ export function Footer() {
                 <li>
                   <Link
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
                     to="/conta"
@@ -105,7 +88,7 @@ export function Footer() {
                 <li>
                   <Link
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
                     to="/emprestimos"
@@ -116,7 +99,7 @@ export function Footer() {
                 <li>
                   <Link
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
                     to="/livros"
@@ -133,7 +116,7 @@ export function Footer() {
                 <li>
                   <a
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     href="#"
                   >
@@ -143,7 +126,7 @@ export function Footer() {
                 <li>
                   <a
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     href="#"
                   >
@@ -153,7 +136,7 @@ export function Footer() {
                 <li>
                   <a
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     href="#"
                   >
@@ -163,7 +146,7 @@ export function Footer() {
                 <li>
                   <a
                     className={
-                      temaEscuro ? "bg-dark text-light" : "bg-white text-dark"
+                      temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     href="#"
                   >

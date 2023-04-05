@@ -36,10 +36,11 @@ export function Home() {
   const temaEscuro = resultado.temaEscuro;
 
   return (
-     <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
-    <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+     <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
+      <Container className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`} >
+    <Container className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
-      <h1 style={{textAlign:'center'}} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
+      <h1 style={{textAlign:'center'}} className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
       </div>
     
     <CardGroup>
@@ -102,20 +103,20 @@ export function Home() {
              
               <td><TimeAgo
               datetime={dataPrazo}
-  locale='pt_BR'
-/> </td>
+              locale='pt_BR'
+            /> </td>
+                          
+                      </tr>
+                      )
+              })}
+            </tbody>
+                </Table>
+                </Container>
               
-          </tr>
-          )
-  })}
-</tbody>
-    </Table>
-    </Container>
-  
- 
-    
-  </div>
-  );
+            
+                </Container>
+              </div>
+              );
 }
 
 

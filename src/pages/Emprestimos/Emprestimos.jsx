@@ -59,7 +59,7 @@ export function Emprestimos() {
         }
       }
       return (
-        <tr className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"} key={emprestimo.id}>
+        <tr className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} key={emprestimo.id}>
           <td>{emprestimo.leitor}</td>
           <td>{emprestimo.email}</td>
           <td>{emprestimo.telefone}</td>
@@ -104,7 +104,7 @@ export function Emprestimos() {
     }
 
     return (
-        <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+        <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
       <Pagination className="d-flex justify-content-center align-items-center">
         <Pagination.First
           disabled={activePage === 1}
@@ -131,9 +131,9 @@ export function Emprestimos() {
   const temaEscuro = resultado.temaEscuro;
 
   return (
-    <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
-      <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
-        <div className="d-flex justify-content-between align-items-center mt-2">
+    <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
+      <Container className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`}>
+        <div className=" d-flex justify-content-between align-items-center mt-2">
           <h1>Empréstimos</h1>
           <Button
             as={Link}
@@ -148,7 +148,7 @@ export function Emprestimos() {
         <Table className="mb-0" bordered>
           <thead>
             <tr
-              className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}
+              className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}
               align="center"
               Valign="center"
             >

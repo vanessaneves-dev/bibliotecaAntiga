@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState} from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import "./PerfilUsuario.css";
 import { useForm } from "react-hook-form";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 import { updateUsuario, uploadFotoPefil } from "../../firebase/auth";
@@ -109,9 +108,11 @@ export function PerfilUsuario() {
 
    
   return (         
-    <Container className="mb-3">
-      <div className="perfil">           
-         <ImagemPerfil imagem={imagem} / >  
+    <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
+      <div className="d-flex flex-wrap justify-content-center gap-5"> 
+        <div style={{width:"200px"}} >         
+         <ImagemPerfil  imagem={imagem} / >  
+         </div> 
 
         <Form onSubmit={handleSubmit(onSubmit)} className="form">
        

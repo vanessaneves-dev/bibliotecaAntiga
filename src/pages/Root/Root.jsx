@@ -3,6 +3,7 @@ import { Navigate, Outlet } from "react-router-dom";
 import { Footer } from "../../components/Footer/Footer";
 import { Menu } from "../../components/Menu/Menu";
 import { AuthContext } from "../../contexts/AuthContext";
+
 import "./root.css"
 
 
@@ -10,6 +11,7 @@ import "./root.css"
 // As páginas com Navbar fixa: home, livros, empréstimos, etc
 export function Root() {
   const usuarioLogado = useContext(AuthContext);
+  
 
   if (usuarioLogado === null) {
     // se está deslogado
@@ -19,10 +21,10 @@ export function Root() {
 
   return (
     <>
-      <header>
+      <header  >
         <Menu />
       </header>
-      <main>
+      <main >
         <Outlet />
       <footer> 
         <Footer />
