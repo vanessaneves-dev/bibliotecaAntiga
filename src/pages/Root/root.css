@@ -31,3 +31,7 @@
 ::-webkit-scrollbar-thumb:hover {
     background: var(--color-blue3);
 }
+
+.dark-color-custom {
+    background-color: #26333D !important ;
+  } 

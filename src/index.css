@@ -1,2 +1,7 @@
 @import "bootstrap/dist/css/bootstrap.min.css";
 @import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css");
+
+
+.dark-mode-custom{
+  background-color: #26333D !important ;
+}

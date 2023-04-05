@@ -1,6 +1,4 @@
-import "./Menu.css";
-
-import logoIcon from "./../../assets/images/BIBLIOTECH-removebg-preview.png";
+import logoIcon from "./../../assets/images/Logo4.svg";
 import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +7,6 @@ import { Button } from "react-bootstrap";
 import { ThemeContext } from "../../contexts/ThemeContext";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import { ImagemPerfil } from "../ImagemPerfil/ImagemPerfil";
 import { FotoPerfilNav } from "../FotoPerfilNav/FotoPerfilNav";
 
 export function Menu() {
@@ -32,26 +29,26 @@ export function Menu() {
     }
   
   return (
-    <Navbar bg="light" variant="light" expand="lg" className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
-      <Container fluid>
+    <Navbar bg="light" variant="light" expand="lg" className={` mb-3  ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`}>
+      <Container fluid >
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="90" alt="Logo" className={temaEscuro ? "bg-dark" : "bg-light"} style={{marginLeft: "25%"}}/>
+            <img src={logoIcon} width="90" alt="Logo" className={` ms-5 ${temaEscuro ? "dark-mode-custom" : "bg-white"}`} style={{marginLeft: "25%"}}/>
           </Link> 
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse style={{marginRight: "5%"}}>
           <Nav className="ms-auto">
-            <Nav.Link className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}  as={Link} to="/">
+            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}  as={Link} to="/">
               Home
             </Nav.Link>
-            <Nav.Link className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} as={Link} to="/livros">
+            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} as={Link} to="/livros">
               Livros
             </Nav.Link>
-            <Nav.Link className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} as={Link} to="/emprestimos">
+            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} as={Link} to="/emprestimos">
               Emprestimos
             </Nav.Link>
-            <Nav.Link as={Link} to="/perfilUsuario" className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
+            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} as={Link} to="/perfilUsuario">
               Meu Perfil
             </Nav.Link>
 
@@ -59,13 +56,15 @@ export function Menu() {
             <FotoPerfilNav />      
             </NavItem>
 
-            <Button className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"} style={{ border: "none" }} onClick={mudar}>
-              <img src={iconeBtn} width="16" />
-            </Button>
-
-            <Nav.Link onClick={onLogout} className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
+            <Nav.Link className={`me-3 ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`} onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
+
+            <Button className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} style={{ border: "none" }} onClick={mudar}>
+              <img src={iconeBtn} width="22" />
+            </Button>
+
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

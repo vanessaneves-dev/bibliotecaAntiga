@@ -19,7 +19,7 @@ export function Ajuda() {
 
   
 
-  return ( <>
+  return ( <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
   <section  id='container-ajuda' className='container-md' >
   <Tab.Container id="left-tabs-example" defaultActiveKey="first">
       <Row>
@@ -52,6 +52,6 @@ export function Ajuda() {
       </Row>
     </Tab.Container>
   </section>
-    </> );
+    </Container> );
 }
 

@@ -5,26 +5,30 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import "./PoliticaDePrivacidade.css";
+import { Container } from "react-bootstrap";
 
 export function PoliticaDePrivacidade() {
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
+  
   return (
-    <div  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+    <div  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
     <div className="m-5">
-      <Link  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"} as={Link} to="/">
+      <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
+      <Link  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} as={Link} to="/">
         <Button variant="primary"> &lt; Voltar </Button>{" "}
       </Link>
       <h3 className="text-center">POLÍTICA DE PRIVACIDADE</h3>
-      <ListGroup className="text-center">
-        <ListGroup.Item  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+      <ListGroup id="custom" className="text-center">
+        <ListGroup.Item  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
           <h5>O que é a Política de Privacidade e o que ela cobre?</h5>
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
-              <Accordion.Header className="text-center">
+              <Accordion.Header  className="text-center">
                 NOSSA POLÍTICA
               </Accordion.Header>
-              <Accordion.Body  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+              <Accordion.Body  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
                 A sua privacidade é importante para nós. É política do
                 Bibliotech respeitar a sua privacidade em relação a qualquer
                 informação sua que possamos coletar no site Bibliotech, e outros
@@ -54,14 +58,14 @@ export function PoliticaDePrivacidade() {
             </Accordion.Item>
           </Accordion>
         </ListGroup.Item>
-        <ListGroup.Item  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+        <ListGroup.Item  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
           <h5>Serviços que utilizamos.</h5>
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header className="text-center">
                 GOOGLE ADS
               </Accordion.Header>
-              <Accordion.Body  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+              <Accordion.Body  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
                 O serviço Google AdSense que usamos para veicular publicidade
                 usa um cookie DoubleClick para veicular anúncios mais relevantes
                 em toda a Web e limitar o número de vezes que um determinado
@@ -84,12 +88,12 @@ export function PoliticaDePrivacidade() {
             </Accordion.Item>
           </Accordion>
         </ListGroup.Item>
-        <ListGroup.Item  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+        <ListGroup.Item  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
           <h5>Compromisso do Usuário.</h5>
           <Accordion defaultActiveKey="0">
             <Accordion.Item eventKey="0">
               <Accordion.Header>NOSSOS TERMOS DE PRIVACIDADE</Accordion.Header>
-              <Accordion.Body  className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
+              <Accordion.Body  className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
                 O usuário se compromete a fazer uso adequado dos conteúdos e da
                 informação que o Bibliotech oferece no site e com caráter
                 enunciativo, mas não limitativo:
@@ -126,6 +130,7 @@ export function PoliticaDePrivacidade() {
           </Accordion>
         </ListGroup.Item>
       </ListGroup>
+      </Container>
     </div>
     </div>
   );

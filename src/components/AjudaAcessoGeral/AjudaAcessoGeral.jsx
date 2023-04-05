@@ -1,7 +1,8 @@
 import { useState } from 'react';
 import {Col, Nav, Row, Tab } from 'react-bootstrap';
 import { CarouselAjudaCadastro } from '../CarouselAjudaCadastro/CarouselAjudaCadastro';
-import { CarouselAjudaLogin } from '../CarouselAjudaLogin/CarouselAjudaLogin';
+import { CarouselAjudaLogin } from '../CarouselAjudaLogin/CarouselAjudaLogin';import { ThemeContext } from "../../contexts/ThemeContext";
+import { useContext } from 'react';
 
 
 export function AjudaAcessoGeral () {
@@ -12,8 +13,11 @@ export function AjudaAcessoGeral () {
     setActiveKey(key);
   };
 
+  const resultado = useContext (ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
 
-  return <>
+  return <>  
+
   <section style={{ marginTop: '60px'}} className='container-md' >
     <Tab.Container id="left-tabs-example" defaultActiveKey="first2">
         <Row>

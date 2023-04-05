@@ -1,6 +1,5 @@
 import { useContext, useEffect, useState} from "react";
 import { AuthContext } from "../../contexts/AuthContext";
-import "./PerfilUsuario.css";
 import { useForm } from "react-hook-form";
 import { Button, Container, Form, Modal } from "react-bootstrap";
 import { updateUsuario, uploadFotoPefil } from "../../firebase/auth";
@@ -64,6 +63,7 @@ export function PerfilUsuario() {
     // Atualizando usuário
     const onSuccess = () => {
       setShowModal(true);
+      window.location.reload();
     };
     const onError = (e) => {
       toast.error(`Um erro aconteceu. Código: ${e.code}`);
@@ -109,9 +109,11 @@ export function PerfilUsuario() {
 
    
   return (         
-    <Container className="mb-3">
-      <div className="perfil">           
-         <ImagemPerfil imagem={imagem} / >  
+    <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
+      <div className="d-flex flex-wrap justify-content-center gap-5"> 
+        <div style={{width:"200px"}} >         
+         <ImagemPerfil  imagem={imagem} / >  
+         </div> 
 
         <Form onSubmit={handleSubmit(onSubmit)} className="form">
        
@@ -145,8 +147,8 @@ export function PerfilUsuario() {
           </Form.Group>
           
           <div className="mt-4">
-            <Button type="submit" variant="secondary" className="me-2">Alterar</Button>
-            <Button as={Link} to="/" variant="secondary">Cancelar</Button>
+            <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
+            <Button as={Link} to="/" style={{backgroundColor:"rgb(36, 141, 173)"}}>Cancelar</Button>
           </div>
           
           <div className="mt-5 d-flex justify-content-end">

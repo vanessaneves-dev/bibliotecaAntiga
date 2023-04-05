@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import logoIcon from "../../assets/images/BIBLIOTECH Logo Footer.png";
+import logoIcon from "../../assets/images/BIBLIOTECHLogo.png";
 import logoHome from "../../assets/images/logo-nome-removebg-preview.png";
 import "./CentralAjudaHome.css";
 

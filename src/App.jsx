@@ -19,6 +19,8 @@ import { PoliticaDePrivacidade} from "./pages/PoliticaDePrivacidade/PoliticaDePr
 import { PerfilUsuario } from "./pages/PerfilUsuario/PerfilUsuario";
 import { FotoPerfilNav } from "./components/FotoPerfilNav/FotoPerfilNav";
 import { ThemeContext } from "./contexts/ThemeContext";
+import { TermosECondicoes } from "./pages/TermosECondicoes/TermosECondicoes";
+import { Cookies } from "./pages/Cookies/Cookies";
 
 export function App() {
   const [usuarioLogado, setUsuarioLogado] = useState(null);
@@ -48,9 +50,9 @@ export function App() {
 
     useEffect(() => {
       if (temaEscuro) {
-        document.body.classList.add("bg-dark", "text-white");
+        document.body.classList.add("dark-mode-custom", "text-white");
       } else {
-        document.body.classList.remove("bg-dark", "text-white")
+        document.body.classList.remove("dark-mode-custom", "text-white")
       }
     }, [temaEscuro]);
   return (
@@ -68,10 +70,13 @@ export function App() {
               <Route path="/emprestimos" element={<Emprestimos />} />
               <Route path="/emprestimos/adicionar" element={<AdicionarEmprestimo />} />
               <Route path="/emprestimos/editar/:id" element={<EditarEmprestimo />} />
-              <Route path="/perfilUsuario" element={<PerfilUsuario/> }/>
-              <Route path="/fotoPerfilNav" element={< FotoPerfilNav /> }/>
-              <Route path="/ajuda" element={<Ajuda/> }/>
+              <Route path="/perfilUsuario" element={<PerfilUsuario/> } />
+              <Route path="/termosECondicoes" element={<TermosECondicoes/> }/>
+               <Route path="/fotoPerfilNav" element=
+               {< FotoPerfilNav /> } />
+              <Route path="/ajuda" element={<Ajuda/> } />
               <Route path="/politicas-de-privacidade" element={<PoliticaDePrivacidade/> } />
+              <Route path="/cookies" element={<Cookies/>} />
             </Route>
             <Route path="/login" element={<Login />} />
             <Route path="/cadastro" element={<Cadastro />} />
