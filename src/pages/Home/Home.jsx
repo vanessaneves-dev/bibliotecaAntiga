@@ -39,7 +39,7 @@ export function Home() {
      <div className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
     <Container className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
-      <h1 style={{textAlign:'center'}} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
+      <h1 style={{content: "", borderBottom: "2px solid var(--color-blue)", width: "15%" }} className={temaEscuro ? "bg-dark text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
       </div>
     
     <CardGroup>
