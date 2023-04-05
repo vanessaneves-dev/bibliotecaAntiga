@@ -63,6 +63,7 @@ export function PerfilUsuario() {
     // Atualizando usuário
     const onSuccess = () => {
       setShowModal(true);
+      window.location.reload();
     };
     const onError = (e) => {
       toast.error(`Um erro aconteceu. Código: ${e.code}`);
@@ -146,8 +147,8 @@ export function PerfilUsuario() {
           </Form.Group>
           
           <div className="mt-4">
-            <Button type="submit" variant="secondary" className="me-2">Alterar</Button>
-            <Button as={Link} to="/" variant="secondary">Cancelar</Button>
+            <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
+            <Button as={Link} to="/" style={{backgroundColor:"rgb(36, 141, 173)"}}>Cancelar</Button>
           </div>
           
           <div className="mt-5 d-flex justify-content-end">

@@ -1,5 +1,3 @@
-import "./Menu.css";
-
 import logoIcon from "./../../assets/images/Logo4.svg";
 import { Container, Nav, NavItem, Navbar } from "react-bootstrap";
 
@@ -31,11 +29,11 @@ export function Menu() {
     }
   
   return (
-    <Navbar bg="light" variant="light" expand="lg" className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
-      <Container fluid>
+    <Navbar bg="light" variant="light" expand="lg" className={` mb-3  ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`}>
+      <Container fluid >
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="90" alt="Logo" className={temaEscuro ? "bg-dark" : "bg-light"} style={{marginLeft: "25%"}}/>
+            <img src={logoIcon} width="90" alt="Logo" className={` ms-5 ${temaEscuro ? "dark-mode-custom" : "bg-white"}`} style={{marginLeft: "25%"}}/>
           </Link> 
         </Navbar.Brand>
         <Navbar.Toggle />
@@ -58,16 +56,15 @@ export function Menu() {
             <FotoPerfilNav />      
             </NavItem>
 
-            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} onClick={onLogout}>
+            <Nav.Link className={`me-3 ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`} onClick={onLogout}>
               <i className="bi bi-box-arrow-right"></i>
             </Nav.Link>
-            <Button className={temaEscuro ? "dark-mode-custom text-light" : "bg-light text-dark"} style={{ border: "none" }} onClick={mudar}>
-              <img src={iconeBtn} width="16" />
+
+            <Button className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} style={{ border: "none" }} onClick={mudar}>
+              <img src={iconeBtn} width="22" />
             </Button>
 
-            <Nav.Link onClick={onLogout} className={temaEscuro ? "bg-dark text-light" : "bg-light text-dark"}>
-              <i className="bi bi-box-arrow-right"></i>
-            </Nav.Link>
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

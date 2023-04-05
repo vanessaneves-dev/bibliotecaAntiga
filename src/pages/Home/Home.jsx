@@ -63,31 +63,31 @@ export function Home() {
       <Container className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`} >
       <Container className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
       <div style={{color: 'var(--color-darkBlue)'}}>
-      <h1 style={{content: "", borderBottom: "2px solid var(--color-blue)", width: "15%" }} className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
+      <h1 style={{content: "", borderBottom: "2px solid var(--color-blue)", width: "15%", marginBottom:"16px" }} className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}><strong>Dashboard</strong></h1>
       </div>
     
     <CardGroup>
 
-    <Card style={{ width: '18rem' }}>
+    <Card  style={{ width: '18rem',backgroundColor:"#D9D9D9", border:"none" }} >
     <Card.Body>
-        <Card.Title style={{ color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '30px', textAlign: 'center'}}>Total de Livros Cadastrados</Card.Title>
-        <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '50px', textAlign: 'center'}}>
+        <Card.Title style={{ color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '24px', textAlign: 'center', margin:"15%"}}>Total de Livros Cadastrados</Card.Title>
+        <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '32px', textAlign: 'center'}}>
           {livros.length}
     </Card.Text>
     </Card.Body>
     </Card>
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem', backgroundColor:"#ebebeb", border:"none" }}>
     <Card.Body>
-        <Card.Title style={{color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '30px', textAlign: 'center'}}>Total de Empréstimos</Card.Title>
-        <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '50px', textAlign: 'center'}}>
+        <Card.Title style={{color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '24px', textAlign: 'center', margin:"15%"}}>Total de Empréstimos</Card.Title>
+        <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '32px', textAlign: 'center'}}>
           {emprestimos.length} <br/>
     </Card.Text>
     </Card.Body>
     </Card>
-    <Card style={{ width: '18rem' }}>
+    <Card style={{ width: '18rem',backgroundColor:"#D9D9D9", border:"none" }}>
     <Card.Body>
-        <Card.Title style={{color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '30px', textAlign: 'center'}}>Status dos Empréstimos</Card.Title>
-          <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '30px', textAlign: 'center'}}>
+        <Card.Title style={{color: 'var(--color-darkBlue)', fontWeight:'bold', fontSize: '24px', textAlign: 'center', margin:"15%"}}>Status dos Empréstimos</Card.Title>
+          <Card.Text style={{color: 'var(--color-blue)', fontWeight:'bold', fontSize: '26px', textAlign: 'center'}}>
           {emprestimos.filter(book=>book.status === 'Entregue').length} entregues
         </Card.Text>
         <Card.Text className='text-warning' style={{fontWeight:'bold', fontSize: '30px', textAlign: 'center'}}>
@@ -98,10 +98,10 @@ export function Home() {
     </CardGroup>
     </Container>
 
-    <Container className="mt-3">
-    <h1 className="titulo"><strong>Últimos empréstimos 📖</strong></h1> 
+    <Container className="mt-5 mb-3">
+    <h1 className="titulo d-inline "><strong>Últimos empréstimos 📖</strong></h1> 
 
-    <Table striped hover className="table-blue rounded">
+    <Table striped hover className="table-blue rounded mt-3">
     <thead>
       <tr>
           <th className="fs-5">Leitor</th> 

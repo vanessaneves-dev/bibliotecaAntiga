@@ -80,7 +80,7 @@ export function Footer() {
                       temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
                     as={Link}
-                    to="/conta"
+                    to="/perfilUsuario"
                   >
                     Sua conta
                   </Link>

@@ -7,7 +7,7 @@ import { ThemeContext } from "../../contexts/ThemeContext";
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
   return (
-    <div className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`}>
+    <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
     <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
     <Row>
       <Col>

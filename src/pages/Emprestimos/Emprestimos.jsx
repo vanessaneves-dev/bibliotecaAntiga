@@ -95,6 +95,7 @@ export function Emprestimos() {
     for (let num = 1; num <= totalPages; num++) {
       items.push(
         <Pagination.Item
+        
           key={num}
           active={num === activePage}
           onClick={() => handlePageChange(num)}
@@ -105,7 +106,7 @@ export function Emprestimos() {
     }
 
     return (
-        <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
+        <div>
       <Pagination className="d-flex justify-content-center align-items-center">
         <Pagination.First
           disabled={activePage === 1}
@@ -146,11 +147,11 @@ export function Emprestimos() {
         </div>
         <hr />
 
-        <Table className="mb-0" bordered>
+        <Table className="mb-0" >
           <thead>
             <tr
               className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}
-              align="center"
+              
               Valign="center"
             >
               <th>Leitor</th>

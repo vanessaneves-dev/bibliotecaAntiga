@@ -56,7 +56,7 @@ export function Livros() {
         {livros === null ? (
           <Loader />
         ) : (
-          <Table className="mb-0" bordered>
+          <Table className="mb-0 rounded" >
             <thead>
               <tr className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
                 <th>Título</th>
@@ -84,7 +84,7 @@ export function Livros() {
                         to={`/livros/editar/${livro.id}`}
                         variant="warning"
                         size="sm"
-                        className="me-2"
+                        className="mb-2"
                       >
                         <i className="bi bi-pencil-fill "></i>
                       </Button>
@@ -94,7 +94,7 @@ export function Livros() {
                         variant="danger"
                         onClick={() => onDeleteLivro(livro.id, livro.titulo)}
                       >
-                        <i className="bi bi-trash3-fill "></i>
+                        <i className="  bi bi-trash3-fill "></i>
                       </Button>
                     </td>
                   </tr>
