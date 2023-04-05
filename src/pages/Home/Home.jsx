@@ -1,4 +1,4 @@
-import { Card, CardGroup, Container, Table } from "react-bootstrap";
+import { Card, CardGroup, Container, Table, Carousel } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getLivros,reorganizaArray } from "../../firebase/livros";
 import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
@@ -11,7 +11,6 @@ import pt_BR from 'timeago.js/lib/lang/pt_BR'
 //import { RingLoader } from "react-spinners";
 import Lottie from "lottie-react";
 import * as imagem from '../../assets/animation/books.json'
-
 
 
 export function Home() {
