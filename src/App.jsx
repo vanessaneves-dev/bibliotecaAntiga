@@ -38,7 +38,6 @@ export function App() {
     // Quando o App for renderizado/inicializado
   }, []);
 
-
     const [temaEscuro, setTemaEscuro] = useState(false);
   
      function mudar() {

@@ -45,19 +45,20 @@ export function Emprestimos() {
         emprestimo.dataEntrega?.toDate()?.toLocaleDateString("ko-KR")
       );
       let cor;
-      if (dataHoje > dataPrazo) {
-        emprestimo.status = "Atrasado";
-        cor = "danger";
-      } else {
-        emprestimo.status = emprestimo.status;
-        if (emprestimo.status === "Pendente") {
-          cor = "warning";
-        } else if (emprestimo.status === "Entregue") {
-          cor = "success";
-        } else {
+      if (emprestimo.status === "Entregue") {
+        cor = "success";
+      } else if (emprestimo.status !== "Entregue") {
+        if (dataHoje > dataPrazo) {
+          emprestimo.status = "Atrasado"
           cor = "danger";
+        } else if(emprestimo.status === "Pendente") {
+          cor = "warning";
+        } else {
+          cor = "success";
         }
       }
+
+      
       return (
         <tr className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} key={emprestimo.id}>
           <td>{emprestimo.leitor}</td>
