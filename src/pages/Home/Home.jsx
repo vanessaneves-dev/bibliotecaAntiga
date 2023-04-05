@@ -1,4 +1,4 @@
-import { Badge, Card, CardGroup, Container, Table } from "react-bootstrap";
+import { Card, CardGroup, Container, Table } from "react-bootstrap";
 import { useEffect, useState } from "react";
 import { getLivros,reorganizaArray } from "../../firebase/livros";
 import { getEmprest, getEmprestimos } from "../../firebase/emprestimos";
@@ -22,7 +22,9 @@ export function Home() {
   const [listaLivros,setListaLivros] = useState([]);
 
 
-
+  const resultado = useContext(ThemeContext);
+  const temaEscuro = resultado.temaEscuro;
+  
   useEffect(() => {
     getLivros().then((resultados) => {
       setLivros(resultados);
@@ -176,6 +178,7 @@ export function Home() {
             </div>
           );
         })} */}
+      </Container>
       </Container>
     </div>
   );
