@@ -80,10 +80,10 @@ export function EditarEmprestimo() {
                             <option value="Entregue">Entregue</option>
                         </Form.Select>
                         <Form.Text className="invalid-feedback">
-                            {errors.status?.message}
+                            {errors.status?.message}git
                         </Form.Text>
                     </Form.Group>
-                    <Button type="submit" variant="success">Editar</Button>
+                    <Button type="submit" style={{ backgroundColor: "#248dad" }}>Editar</Button>
                 </Form>
             </Container>
         </div>
