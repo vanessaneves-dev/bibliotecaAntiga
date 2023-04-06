@@ -8,9 +8,10 @@ import { ThemeContext } from "../../contexts/ThemeContext";
 import TimeAgo from 'timeago-react';
 import * as timeago from 'timeago.js';
 import pt_BR from 'timeago.js/lib/lang/pt_BR'
-//import { RingLoader } from "react-spinners";
+
 import Lottie from "lottie-react";
 import * as imagem from '../../assets/animation/books.json'
+
 
 
 export function Home() {
@@ -60,18 +61,15 @@ export function Home() {
   useEffect(() => {
       setTimeout(() => {
       setIsLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   
   return isLoading ? 
-  <Container className="d-flex align-items-center justify-content-center w-100 h-100" style={{height: "100vh", color: "#4A67DF"}}>
-    <h1>Bem-vindo ao mundo do conhecimento!!!
-    {/* <RingLoader className="mx-auto" isLoading={isLoading} size={350} color={"#4A67DF"}/> */}
-    <Lottie animationData={imagem} autoPlay />
-    </h1>
-    </Container> :
-
+  
+  <Container className="shadow p-5 mb-5 bg-body-tertiary rounded d-flex align-items-center justify-content-center container-ls" >
+          <p> <Lottie animationData={imagem} autoPlay /></p> 
+      </Container>  :
   (    
     <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
       <Container className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`} >
@@ -115,7 +113,7 @@ export function Home() {
     <Container className="mt-5 mb-3">
     <h1 className="titulo d-inline "><strong>Últimos empréstimos 📖</strong></h1> 
 
-        <Table striped bordered hover className="table-blue">
+        <Table striped bordered hover className="table-blue mt-3">
           <thead>
             <tr>
               <th className="fs-5"> Leitor</th>
@@ -151,12 +149,12 @@ export function Home() {
         </Table>
       </Container>
       <Container className="my-5">
-      <h3 className="text-center mb-3">Aproveite a leitura: <br/> Confira nossas sugestões de empréstimo de livros</h3> 
-        <Carousel className="mx-auto" variant="dark">
+      <h1 className="titulo d-inline "><strong>Confira nossas sugestões de livros  📖</strong></h1>
+        <Carousel className="mx-auto mt-3" variant="dark">
           {livrosRepetidos.map((data) => {
             console.log(data)
             return (
-              <Carousel.Item interval={100000}>
+              <Carousel.Item interval={100000} >
                 <img
                   className="d-block w-80 mx-auto" 
                   src={data.l.urlCapa}
@@ -168,15 +166,7 @@ export function Home() {
             );
           })}
         </Carousel>
-        {/* {livrosRepetidos.map((data) => {
-          return (
-            <div>
-              <ul>
-                <li>{data}</li>
-              </ul>
-            </div>
-          );
-        })} */}
+      
       </Container>
       </Container>
     </div>

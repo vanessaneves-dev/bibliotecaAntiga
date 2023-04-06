@@ -5,6 +5,8 @@ import { getEmprestimos } from "../../firebase/emprestimos";
 import { Loader } from "../../components/Loader/Loader";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import Lottie from "lottie-react";
+import * as imagem from '../../assets/animation/books.json'
 
 export function Emprestimos() {
   const [emprestimos, setEmprestimos] = useState(null);
@@ -59,6 +61,7 @@ export function Emprestimos() {
       }
 
       
+      
       return (
         <tr className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} key={emprestimo.id}>
           <td>{emprestimo.leitor}</td>
@@ -105,6 +108,8 @@ export function Emprestimos() {
       );
     }
 
+
+
     return (
         <div>
       <Pagination className="d-flex justify-content-center align-items-center">
@@ -132,7 +137,18 @@ export function Emprestimos() {
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
 
-  return (
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+      setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+
+  return  isLoading ? <Container className="shadow p-5 mb-5 bg-body-tertiary rounded d-flex align-items-center justify-content-center container-ls" >
+  <p> <Lottie animationData={imagem} autoPlay /></p> 
+</Container>  :(
     <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
       <Container className={`shadow p-5 mb-5 bg-body-tertiary rounded ${temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}`}>
         <div className=" d-flex justify-content-between align-items-center mt-2">

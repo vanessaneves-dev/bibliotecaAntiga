@@ -8,10 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 import semFotoPerfil from "../../assets/images/perfilSemFoto.png"
 import { deleteUser } from "@firebase/auth";
 import {ImagemPerfil} from "../../components/ImagemPerfil/ImagemPerfil";
-
-
 export function PerfilUsuario() {
-
   
   const usuarioLogado = useContext(AuthContext);   
   const defaultValues = {
@@ -23,9 +20,7 @@ export function PerfilUsuario() {
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues });
-
   const navigate = useNavigate();
-
   const modalStyle = {
     display: "flex",
     alignItems: "center",
@@ -38,7 +33,6 @@ export function PerfilUsuario() {
     backgroundColor: "rgba(0, 0, 0, 0.5)",
     zIndex: 9999,
   };
-
   const modalContentStyle = {
     backgroundColor: "#fff",
     padding: "2rem",
@@ -49,7 +43,6 @@ export function PerfilUsuario() {
      
     const [imagem, setImagem] = useState(null);
     const [showModal, setShowModal] = useState(false);
-
   useEffect(() => {
     // Verificando se imagem está null, se sim, atribua a imagem de perfil padrão ou a imagem do usuário
     if (usuarioLogado.photoURL !== null) {
@@ -59,40 +52,47 @@ export function PerfilUsuario() {
       }
     }, [usuarioLogado]);
     
-  function onSubmit(data) {
-    // Atualizando usuário
-    const onSuccess = () => {
-      setShowModal(true);
-      window.location.reload();
-    };
-    const onError = (e) => {
-      toast.error(`Um erro aconteceu. Código: ${e.code}`);
-    };
-    updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-    
-    // Verificando se uma imagem foi enviada
-    const img = data.imagem[0];
-    if (img) {
-      const toastId = toast.loading("Upload da imagem...", { position: "top-right" });
+    const [photoURL, setPhotoURL] = useState(null);
 
-       // Carregando o toast de upload de imagem
-      uploadFotoPefil(img).then((url) => {
-        toast.dismiss(toastId);
-        data.photoURL = url;
-        delete data.imagem;
-
-        // Atualizando usuário com a nova imagem de perfil
-        updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-      })
-    }
-    else {
-  
-      // Se não houver imagem, apenas atualize o usuário
-      delete data.imagem;
-      updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-    }
+    useEffect(() => {
+      if (photoURL) {
+    setImagem(photoURL);
   }
+    }, [photoURL]);
 
+    function onSubmit(data){
+      // Atualizando usuário
+      const onSuccess = () => {
+        setShowModal(true);   
+        setPhotoURL(data.photoURL);
+      };
+      const onError = (e) => {
+        toast.error(`Um erro aconteceu. Código: ${e.code}`);
+      };
+      updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+      
+      // Verificando se uma imagem foi enviada
+      const img = data.imagem[0];
+      if (img) {
+        const toastId = toast.loading("Upload da imagem...", { position: "top-right" });
+        // Carregando o toast de upload de imagem
+        setPhotoURL(data.photoURL);
+        
+        uploadFotoPefil(img).then((url) => {
+          toast.dismiss(toastId);
+          data.photoURL = url;
+          delete data.imagem;
+          // Atualizando usuário com a nova imagem de perfil
+          updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+        })
+      }
+      else {
+    
+        // Se não houver imagem, apenas atualize o usuário
+        delete data.imagem;
+        updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+      }
+    }
     // Função para deletar o usuário
   function onDelete() {
     deleteUser(usuarioLogado).then(() => {
@@ -104,17 +104,18 @@ export function PerfilUsuario() {
   // Função para fechar o modal
   function handleCloseModal() {
     setShowModal(false);
+    
   }
     
-
    
   return (         
-    <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
+    <Container className="shadow p-5 mb-5 
+    bg-body-tertiary rounded">
+     
       <div className="d-flex flex-wrap justify-content-center gap-5"> 
         <div style={{width:"200px"}} >         
          <ImagemPerfil  imagem={imagem} / >  
          </div> 
-
         <Form onSubmit={handleSubmit(onSubmit)} className="form">
        
           <Form.Group className="mb-3">
@@ -137,7 +138,6 @@ export function PerfilUsuario() {
               {errors.email?.message}
             </Form.Text>
           </Form.Group>
-
           <Form.Group className="mb-3">
             <Form.Label>Senha</Form.Label>
             <Form.Control type="text" size="lg" placeholder="********" className={errors.senha && "is-invalid"} {...register("senha", { minLength: { value: 8, message: "Mínimo de 8 caracteres!" } })} />
@@ -145,12 +145,13 @@ export function PerfilUsuario() {
               {errors.senha?.message}
             </Form.Text>
           </Form.Group>
+
           
           <div className="mt-4">
-            <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
+          <Button type="submit" style={{backgroundColor:"rgb(36, 141, 173)"}}  className="me-2">Alterar</Button>
             <Button as={Link} to="/" style={{backgroundColor:"rgb(36, 141, 173)"}}>Cancelar</Button>
           </div>
-          
+
           <div className="mt-5 d-flex justify-content-end">
             <Button variant="danger" onClick={onDelete}>Deletar perfil</Button>
           </div>
@@ -159,12 +160,10 @@ export function PerfilUsuario() {
       {showModal && (        
         <div style={modalStyle} onClick={() => setShowModal(false)}>
           <div style={modalContentStyle} onClick={(e) => e.stopPropagation()}>
-            <h3>Usuário atualizado com sucesso</h3>
-            
+            <h3>Usuário atualizado com sucesso</h3>            
           </div>
         </div>
       )}
-
     </Container>
   )
 }

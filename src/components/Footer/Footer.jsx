@@ -118,7 +118,7 @@ export function Footer() {
                     className={
                       temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
-                    href="#"
+                    href="https://github.com/eujoaolima/bibliotech" target="_blank"
                   >
                     <i className="bi bi-github"></i> Github
                   </a>
@@ -128,7 +128,7 @@ export function Footer() {
                     className={
                       temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
-                    href="#"
+                    href="https://www.instagram.com/" target="_blank"
                   >
                     <i className="bi bi-instagram"></i> Instagram
                   </a>
@@ -138,7 +138,7 @@ export function Footer() {
                     className={
                       temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
-                    href="#"
+                    href="https://br.linkedin.com/" target="_blank"
                   >
                     <i className="bi bi-linkedin"></i> Linkedin
                   </a>
@@ -148,7 +148,7 @@ export function Footer() {
                     className={
                       temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"
                     }
-                    href="#"
+                    href="https://www.tiktok.com/pt-BR/" target="_blank"
                   >
                     <i className="bi bi-tiktok"></i> Tiktok
                   </a>

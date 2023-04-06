@@ -6,7 +6,7 @@ import semFotoPerfil from "../../assets/images/perfilSemFoto.png";
 
 export function FotoPerfilNav() {
   const usuarioLogado = useContext(AuthContext);
-
+  
   
   if (usuarioLogado) {
     const fotoPerfil = usuarioLogado.photoURL ? usuarioLogado.photoURL : semFotoPerfil;

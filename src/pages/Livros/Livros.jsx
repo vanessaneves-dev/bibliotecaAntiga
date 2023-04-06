@@ -7,6 +7,8 @@ import { deleteLivro, getLivros } from "../../firebase/livros";
 import "./Livros.css";
 import { useContext } from "react";
 import { ThemeContext } from "../../contexts/ThemeContext";
+import Lottie from "lottie-react";
+import * as imagem from '../../assets/animation/books.json'
 
 export function Livros() {
   const [livros, setLivros] = useState(null);
@@ -20,6 +22,13 @@ export function Livros() {
       setLivros(resultados);
     });
   }
+  const [isLoading, setIsLoading] = useState(true);
+  
+  useEffect(() => {
+      setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
 
   function onDeleteLivro(id, titulo) {
     const deletar = window.confirm(
@@ -38,7 +47,9 @@ export function Livros() {
   const resultado = useContext(ThemeContext);
   const temaEscuro = resultado.temaEscuro;
 
-  return (
+  return isLoading ? <Container className="shadow p-5 mb-5 bg-body-tertiary rounded d-flex align-items-center justify-content-center container-ls" >
+  <p> <Lottie animationData={imagem} autoPlay /></p> 
+</Container>  : (
     <div className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}>
     <div className="livros">
       <Container className="shadow p-5 mb-5 bg-body-tertiary rounded" >
