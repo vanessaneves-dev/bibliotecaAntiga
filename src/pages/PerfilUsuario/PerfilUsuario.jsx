@@ -52,37 +52,47 @@ export function PerfilUsuario() {
       }
     }, [usuarioLogado]);
     
-  function onSubmit(data) {
-    // Atualizando usuário
-    const onSuccess = () => {
-      setShowModal(true);
-      window.location.reload();
-    };
-    const onError = (e) => {
-      toast.error(`Um erro aconteceu. Código: ${e.code}`);
-    };
-    updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-    
-    // Verificando se uma imagem foi enviada
-    const img = data.imagem[0];
-    if (img) {
-      const toastId = toast.loading("Upload da imagem...", { position: "top-right" });
-       // Carregando o toast de upload de imagem
-      uploadFotoPefil(img).then((url) => {
-        toast.dismiss(toastId);
-        data.photoURL = url;
-        delete data.imagem;
-        // Atualizando usuário com a nova imagem de perfil
-        updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-      })
-    }
-    else {
-  
-      // Se não houver imagem, apenas atualize o usuário
-      delete data.imagem;
-      updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
-    }
+    const [photoURL, setPhotoURL] = useState(null);
+
+    useEffect(() => {
+      if (photoURL) {
+    setImagem(photoURL);
   }
+    }, [photoURL]);
+
+    function onSubmit(data){
+      // Atualizando usuário
+      const onSuccess = () => {
+        setShowModal(true);   
+        setPhotoURL(data.photoURL);
+      };
+      const onError = (e) => {
+        toast.error(`Um erro aconteceu. Código: ${e.code}`);
+      };
+      updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+      
+      // Verificando se uma imagem foi enviada
+      const img = data.imagem[0];
+      if (img) {
+        const toastId = toast.loading("Upload da imagem...", { position: "top-right" });
+        // Carregando o toast de upload de imagem
+        setPhotoURL(data.photoURL);
+        
+        uploadFotoPefil(img).then((url) => {
+          toast.dismiss(toastId);
+          data.photoURL = url;
+          delete data.imagem;
+          // Atualizando usuário com a nova imagem de perfil
+          updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+        })
+      }
+      else {
+    
+        // Se não houver imagem, apenas atualize o usuário
+        delete data.imagem;
+        updateUsuario(usuarioLogado, data).then(onSuccess).catch(onError);
+      }
+    }
     // Função para deletar o usuário
   function onDelete() {
     deleteUser(usuarioLogado).then(() => {
@@ -94,11 +104,14 @@ export function PerfilUsuario() {
   // Função para fechar o modal
   function handleCloseModal() {
     setShowModal(false);
+    
   }
     
    
   return (         
-    <Container className="shadow p-5 mb-5 bg-body-tertiary rounded">
+    <Container className="shadow p-5 mb-5 
+    bg-body-tertiary rounded">
+     
       <div className="d-flex flex-wrap justify-content-center gap-5"> 
         <div style={{width:"200px"}} >         
          <ImagemPerfil  imagem={imagem} / >  
@@ -147,8 +160,7 @@ export function PerfilUsuario() {
       {showModal && (        
         <div style={modalStyle} onClick={() => setShowModal(false)}>
           <div style={modalContentStyle} onClick={(e) => e.stopPropagation()}>
-            <h3>Usuário atualizado com sucesso</h3>
-            
+            <h3>Usuário atualizado com sucesso</h3>            
           </div>
         </div>
       )}
