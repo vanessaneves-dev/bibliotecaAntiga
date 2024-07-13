@@ -103,16 +103,16 @@ export function Login() {
 
   return (
     <section>
-    <Container fluid className="my-5">     
+    <Container fluid className="my-3">     
     <div className="row">
-      <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div id="container-login" className="card border-0 shadow rounded-3  my-5 px-5">
-          <div className="card-body p-1 p-sm-4"></div>
+      <div className="col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div id="container-login" className="card border-0 shadow rounded-3  my-3 px-5">
+          <div className="card-body  p-sm-2"></div>
           <p className="text-center">
             <img src={logoIcon} width="70%" alt="Logo do app" />
           </p>
-          <h5 class="card-title text-muted text-center mb-3 fw-light fs-3">Faça seu Login</h5>
-          <p className="text-muted mt-3 "> Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
+          <h5 class="card-title text-muted text-center mb-2 fw-light fs-4">Faça seu Login</h5>
+          <p className="text-muted mt-2 "> Não tem conta? <Link to="/cadastro">Cadastre-se</Link>
           </p>
           <hr className="mt-0" />
      
@@ -162,7 +162,7 @@ export function Login() {
               Entrar
             </Button>
           </div>
-          <hr className="my-4" />
+          <hr className="my-3" />
           <div className="d-grid mb-2">
             <Button
               variant="danger"
@@ -180,7 +180,7 @@ export function Login() {
                <i className="bi bi-github" width="32" ></i> Entrar com Github 
             </Button>
           </div>
-          <div className="d-grid mb-5">
+          <div className="d-grid mb-4">
             <Button
               variant="primary"
               className="btn-login text-uppercase fw-bold btn-m border-0 btn-outline-secondary"

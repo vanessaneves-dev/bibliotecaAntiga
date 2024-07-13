@@ -16,7 +16,7 @@ export function Root() {
   if (usuarioLogado === null) {
     // se está deslogado
     // redireciona para a página de login
-    return navigate("/login");
+    return navigate("/");
   } else if(!usuarioLogado.emailVerified) {
     return <Navigate to="/confirmacao-email"/>
   }

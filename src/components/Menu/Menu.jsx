@@ -33,13 +33,14 @@ export function Menu() {
       <Container fluid >
         <Navbar.Brand>
           <Link to="/">
-            <img src={logoIcon} width="90" alt="Logo" className={` ms-5 ${temaEscuro ? "dark-mode-custom" : "bg-white"}`} style={{marginLeft: "25%"}}/>
+            <img src={logoIcon} width="120" alt="Logo" className={` ms-5 ${temaEscuro ? "dark-mode-custom" : "bg-white"}`} style={{marginLeft: "25%"}}/>
           </Link> 
         </Navbar.Brand>
         <Navbar.Toggle />
         <Navbar.Collapse style={{marginRight: "5%"}}>
           <Nav className="ms-auto">
-            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}  as={Link} to="/">
+            <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"}  as={Link} to=
+            "/">
               Home
             </Nav.Link>
             <Nav.Link className={temaEscuro ? "dark-mode-custom text-light" : "bg-white text-dark"} as={Link} to="/livros">

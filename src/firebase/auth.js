@@ -86,8 +86,6 @@ export async function uploadFotoPefil(imagem) {
   const imageRef = ref(storage, `usuarios/${filename}`);
   const result = await uploadBytes(imageRef, imagem);
   return await getDownloadURL(result.ref);
-  window.location.reload();
-  
   
 }
 

@@ -1,5 +1,5 @@
 import { Button, Container, Form } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import logoIcon from "../../assets/images/Logo3.svg";
 import { useForm } from "react-hook-form";
 import { cadastrarEmailSenha, loginFacebook, loginGitHub, loginGoogle } from "../../firebase/auth";
@@ -7,6 +7,8 @@ import { toast } from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai';
+import { useContext } from "react";
+import { AuthContext } from "../../contexts/AuthContext";
 import "./Cadastro.css";
 
 
@@ -96,20 +98,25 @@ export function Cadastro() {
         });
       });
   }
-  
+  const usuarioLogado = useContext(AuthContext);
+
+  // Se tiver dados no objeto, está logado
+  if (usuarioLogado !== null) {
+    return <Navigate to="/" />;
+  }
 
   return (
     <section>
-    <Container fluid className="my-5">
+    <Container fluid className="my-3">
     <div className="row">
-      <div className="col-sm-9 col-md-7 col-lg-5 mx-auto">
-        <div id="container-login" className="card border-0 shadow rounded-3  my-5 px-5">
-          <div className="card-body p-1 p-sm-4"></div>
+      <div className="col-sm-9 col-md-7 col-lg-4 mx-auto">
+        <div id="container-login" className="card border-0 shadow rounded-3  my-3 px-5">
+          <div className="card-body  p-sm-2"></div>
       <p className="text-center">
         <img src={logoIcon} width="70%" alt="Logo do app" />
       </p>
-      <h5 class="card-title mb-3 fw-light fs-3 text-muted">Faça parte da nossa plataforma</h5>
-      <p className="text-muted mt-3 ">
+      <h5 class="card-title mb-1 fw-light fs-5 text-muted">Faça parte da nossa plataforma</h5>
+      <p className="text-muted mt-2 ">
         Já tem conta? <Link to="/login">Entre</Link>
       </p>
       <hr className="mt-0" />
@@ -151,7 +158,7 @@ export function Cadastro() {
             Cadastrar
             </Button>
           </div>
-          <hr className="my-4" />
+          <hr className="my-3" />
 
           <div className="d-grid mb-2">
             <Button
@@ -164,12 +171,12 @@ export function Cadastro() {
             <div className="d-grid mb-2">
             <Button 
               variant="secondary" 
-              className="btn-login text-uppercase fw-bold border-1btn-m btn-outline-secondary" 
+              className="btn-login text-uppercase fw-bold border-1 btn-m btn-outline-secondary" 
               type="button" onClick={onLoginGitHub}> <i className="bi bi-github me-1" width="32" ></i>
                 Cadastrar com o Github 
             </Button>
             </div>
-            <div className="d-grid mb-5">
+            <div className="d-grid mb-4">
               <Button
                className="btn-login text-uppercase fw-bold border-0 btn-m btn-outline-secondary" 
                variant="primary"
